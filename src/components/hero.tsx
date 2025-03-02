@@ -8,14 +8,9 @@ interface HeroProps {
 const Hero: React.FC<HeroProps> = () => {
   const [text, setText] = useState("");
   const fullText = "Maxwell Fernandes";
-  const [showPrefix, setShowPrefix] = useState(false);
 
   useEffect(() => {
-
-    // First show "Hey! I am"
-    setShowPrefix(true);
-
-    // Then start typing the name
+    // Start typing the name
     if (text.length < fullText.length) {
       const timeout = setTimeout(() => {
         setText((prev) => prev + fullText[text.length]);
@@ -41,7 +36,7 @@ const Hero: React.FC<HeroProps> = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 0.5 }}
-        className="min-h-[60px]" // Added to prevent layout shift
+        className="min-h-[60px]"
       >
         <h1 className="text-5xl font-bold">
           <span className="text-white">Hey! I am </span>
@@ -52,7 +47,7 @@ const Hero: React.FC<HeroProps> = () => {
         </h1>
       </motion.div>
       <p className="text-xl mt-4 text-gray-300">
-      Computer Engineering Student & Software Developer
+        Computer Engineering Student & Software Developer
       </p>
       <div className="flex flex-col sm:flex-row gap-4 mt-6">
         <motion.button
