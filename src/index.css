@@ -1,0 +1,78 @@
+
+
+@import "tailwindcss";
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+  cursor: none; /* Hide default cursor */
+}
+
+@media (max-width: 768px) {
+  html {
+    cursor: auto; /* Show default cursor on mobile */
+  }
+}
+
+body {
+  @apply bg-black text-white;
+  font-family: 'Inter', sans-serif;
+  background-image: url("https://source.unsplash.com/1600x900/?galaxy,stars,space");
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+/* Hide cursor on clickable elements */
+a, button {
+  cursor: none;
+}
+
+@media (max-width: 768px) {
+  a, button {
+    cursor: pointer;
+  }
+}
+
+/* Smooth scrolling container */
+.lenis {
+  height: 100vh;
+  width: 100%;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* Glow effects */
+.glow-text {
+  text-shadow: 0 0 10px rgba(34, 211, 238, 0.5);
+}
+
+.glow-button {
+  @apply bg-cyan-500 text-white font-bold py-3 px-6 rounded-full transition-all duration-300;
+  box-shadow: 0 0 20px rgba(34, 211, 238, 0.3);
+}
+
+.glow-button:hover {
+  box-shadow: 0 0 30px rgba(34, 211, 238, 0.5);
+}
+
+/* Space-Themed Background */
+body {
+  @apply bg-black text-white; /* Dark mode */
+}
+
+/* Add a soft glow effect to text */
+h1, h2, h3 {
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
