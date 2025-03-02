@@ -5,12 +5,13 @@ interface HeroProps {
   name: string;
 }
 
-const Hero: React.FC<HeroProps> = ({ name }) => {
+const Hero: React.FC<HeroProps> = () => {
   const [text, setText] = useState("");
   const fullText = "Maxwell Fernandes";
   const [showPrefix, setShowPrefix] = useState(false);
 
   useEffect(() => {
+
     // First show "Hey! I am"
     setShowPrefix(true);
 
