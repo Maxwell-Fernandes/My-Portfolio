@@ -1,6 +1,6 @@
-import { motion } from "framer-motion";
-import { FiGithub, FiExternalLink, FiArrowRight } from "react-icons/fi";
-import { memo } from "react";
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { FiGithub, FiExternalLink, FiArrowRight, FiCode } from "react-icons/fi";
+import { memo, useRef, useState } from "react";
 
 interface Project {
   title: string;
@@ -9,6 +9,7 @@ interface Project {
   tags: string[];
   github: string;
   demo?: string;
+  featured?: boolean;
 }
 
 const projects: Project[] = [
@@ -18,6 +19,7 @@ const projects: Project[] = [
     image: "/projects/quickart.jpg",
     tags: ["Flutter", "Firebase", "Dart", "Cloud Firestore", "State Management", "Real-time Database"],
     github: "https://github.com/Maxwell-Fernandes/Quickart",
+    featured: true,
   },
   {
     title: "Quickart Admin",
@@ -34,6 +36,7 @@ const projects: Project[] = [
     image: "/projects/download-accelerator.png",
     tags: ["Java", "Multi-threading", "File Handling", "Encryption", "Network Programming"],
     github: "https://github.com/Maxwell-Fernandes/Download-Accelerator",
+    featured: true,
   },
   {
     title: "Toralizer",
@@ -53,117 +56,259 @@ const projects: Project[] = [
   }
 ];
 
+// 3D Tilt Card Component with glassmorphism
+interface ProjectCardProps {
+  project: Project;
+  index: number;
+}
+
+const ProjectCard: React.FC<ProjectCardProps> = memo(({ project, index }) => {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const [isHovered, setIsHovered] = useState(false);
+
+  // Mouse position tracking for 3D tilt effect
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  // Spring animations for smooth movement
+  const rotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], [7, -7]), {
+    stiffness: 150,
+    damping: 20,
+  });
+  const rotateY = useSpring(useTransform(mouseX, [-0.5, 0.5], [-7, 7]), {
+    stiffness: 150,
+    damping: 20,
+  });
+
+  // Handle mouse move for 3D tilt
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!cardRef.current) return;
+
+    const rect = cardRef.current.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+
+    // Normalize mouse position (-0.5 to 0.5)
+    const percentX = (e.clientX - centerX) / (rect.width / 2);
+    const percentY = (e.clientY - centerY) / (rect.height / 2);
+
+    mouseX.set(percentX);
+    mouseY.set(percentY);
+  };
+
+  const handleMouseLeave = () => {
+    mouseX.set(0);
+    mouseY.set(0);
+    setIsHovered(false);
+  };
+
+  return (
+    <motion.div
+      ref={cardRef}
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, delay: index * 0.1, ease: "easeOut" }}
+      viewport={{ once: true, margin: "-100px" }}
+      style={{
+        rotateX,
+        rotateY,
+        transformStyle: "preserve-3d",
+      }}
+      onMouseMove={handleMouseMove}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={handleMouseLeave}
+      className="relative group"
+    >
+      {/* Animated gradient border */}
+      <div className="absolute -inset-0.5 bg-gradient-to-r from-cyan-500 via-purple-500 to-cyan-500 rounded-2xl opacity-0 group-hover:opacity-100 blur-sm transition-opacity duration-500 animate-gradient-xy" />
+
+      {/* Glass card */}
+      <div className="relative bg-gray-900/70 backdrop-blur-xl rounded-2xl overflow-hidden border border-gray-800/50 hover:border-cyan-500/50 transition-all duration-500">
+        {/* Project Image with parallax */}
+        <div className="relative h-64 md:h-80 overflow-hidden">
+          {/* Overlay gradient */}
+          <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/50 to-transparent z-10" />
+
+          {/* Featured badge */}
+          {project.featured && (
+            <motion.div
+              initial={{ scale: 0, rotate: -12 }}
+              animate={{ scale: 1, rotate: -12 }}
+              transition={{ delay: index * 0.1 + 0.3, type: "spring" }}
+              className="absolute top-4 left-4 z-20 bg-gradient-to-r from-cyan-500 to-purple-500 text-white px-4 py-1.5 rounded-full text-sm font-semibold shadow-lg"
+            >
+              ⭐ Featured
+            </motion.div>
+          )}
+
+          {/* Image with hover zoom */}
+          <motion.img
+            src={project.image}
+            alt={project.title}
+            className="w-full h-full object-cover"
+            style={{
+              transform: isHovered ? "scale(1.1)" : "scale(1)",
+              transition: "transform 0.6s ease-out",
+            }}
+          />
+
+          {/* Glowing effect on hover */}
+          <motion.div
+            className="absolute inset-0 bg-gradient-to-t from-cyan-500/20 to-transparent"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: isHovered ? 1 : 0 }}
+            transition={{ duration: 0.3 }}
+          />
+        </div>
+
+        {/* Content */}
+        <div className="relative p-6 md:p-8" style={{ transform: "translateZ(50px)" }}>
+          {/* Title with icon */}
+          <div className="flex items-start justify-between gap-4 mb-4">
+            <h3 className="text-2xl md:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400">
+              {project.title}
+            </h3>
+            <motion.div
+              className="text-cyan-400 text-2xl"
+              animate={{ rotate: isHovered ? 360 : 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              <FiCode />
+            </motion.div>
+          </div>
+
+          {/* Description */}
+          <p className="text-gray-300 mb-6 leading-relaxed">
+            {project.description}
+          </p>
+
+          {/* Tech Stack with improved design */}
+          <div className="flex flex-wrap gap-2 mb-6">
+            {project.tags.slice(0, 4).map((tag, i) => (
+              <motion.span
+                key={tag}
+                initial={{ opacity: 0, scale: 0 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ delay: index * 0.1 + i * 0.05 }}
+                viewport={{ once: true }}
+                className="px-3 py-1.5 bg-gradient-to-r from-cyan-500/10 to-purple-500/10 border border-cyan-500/30 text-cyan-300 rounded-lg text-sm font-medium backdrop-blur-sm hover:border-cyan-400 hover:shadow-lg hover:shadow-cyan-500/20 transition-all duration-300"
+              >
+                {tag}
+              </motion.span>
+            ))}
+            {project.tags.length > 4 && (
+              <span className="px-3 py-1.5 bg-gray-800/50 text-gray-400 rounded-lg text-sm">
+                +{project.tags.length - 4} more
+              </span>
+            )}
+          </div>
+
+          {/* Links with enhanced design */}
+          <div className="flex flex-wrap gap-4">
+            <motion.a
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+              className="flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-gray-800 to-gray-900 hover:from-cyan-600 hover:to-purple-600 text-white rounded-lg font-medium shadow-lg hover:shadow-cyan-500/50 transition-all duration-300 border border-gray-700 hover:border-cyan-500"
+            >
+              <FiGithub className="text-lg" />
+              <span>View Code</span>
+            </motion.a>
+
+            {project.demo && (
+              <motion.a
+                href={project.demo}
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                className="flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 text-white rounded-lg font-medium shadow-lg hover:shadow-purple-500/50 transition-all duration-300"
+              >
+                <FiExternalLink className="text-lg" />
+                <span>Live Demo</span>
+              </motion.a>
+            )}
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  );
+});
+
+ProjectCard.displayName = 'ProjectCard';
+
 const Projects: React.FC = memo(() => {
   return (
-    <section id="projects" className="py-20 px-6 bg-black">
-      <div className="max-w-6xl mx-auto">
-        <motion.h2
-          initial={{ opacity: 0, y: -20 }}
+    <section id="projects" className="relative py-20 px-6 bg-black overflow-hidden">
+      {/* Animated background elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan-500/5 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: "1s" }} />
+      </div>
+
+      <div className="relative max-w-7xl mx-auto">
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: -30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-4xl font-bold text-center text-cyan-400 mb-16"
+          className="text-center mb-16"
         >
-          Featured Projects
-        </motion.h2>
+          <motion.div
+            initial={{ scale: 0 }}
+            whileInView={{ scale: 1 }}
+            transition={{ duration: 0.5, type: "spring" }}
+            viewport={{ once: true }}
+            className="inline-block mb-4"
+          >
+            <span className="px-4 py-2 bg-gradient-to-r from-cyan-500/10 to-purple-500/10 border border-cyan-500/30 rounded-full text-cyan-400 text-sm font-medium">
+              🚀 My Work
+            </span>
+          </motion.div>
 
-        <div className="grid grid-cols-1 gap-12 mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-400 to-cyan-400 mb-4">
+            Featured Projects
+          </h2>
+
+          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+            A showcase of my best work in software development, from mobile apps to system-level programming
+          </p>
+        </motion.div>
+
+        {/* Projects Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
           {projects.map((project, index) => (
-            <motion.div
-              key={project.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              className={`flex flex-col ${
-                index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
-              } gap-8 bg-gray-900/50 rounded-xl overflow-hidden backdrop-blur-sm`}
-            >
-              {/* Project Image */}
-              <div className="w-full md:w-1/2 relative group">
-                <div className="absolute inset-0 bg-cyan-500/20 group-hover:opacity-0 transition-opacity duration-300"></div>
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-
-              {/* Project Info */}
-              <div className="w-full md:w-1/2 p-8 flex flex-col justify-center">
-                <h3 className="text-2xl font-bold text-cyan-400 mb-4">
-                  {project.title}
-                </h3>
-                <p className="text-gray-300 mb-6">
-                  {project.description}
-                </p>
-
-                {/* Tech Stack */}
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {project.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-3 py-1 bg-cyan-500/10 text-cyan-400 rounded-full text-sm"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-
-                {/* Links */}
-                <div className="flex gap-4">
-                  <motion.a
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
-                    className="flex items-center gap-2 text-white hover:text-cyan-400 transition-colors"
-                  >
-                    <FiGithub className="text-xl" />
-                    <span>Source Code</span>
-                  </motion.a>
-                  {project.demo && (
-                    <motion.a
-                      href={project.demo}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.9 }}
-                      className="flex items-center gap-2 text-white hover:text-cyan-400 transition-colors"
-                    >
-                      <FiExternalLink className="text-xl" />
-                      <span>Live Demo</span>
-                    </motion.a>
-                  )}
-                </div>
-              </div>
-            </motion.div>
+            <ProjectCard key={project.title} project={project} index={index} />
           ))}
         </div>
 
-        {/* View More Projects Section */}
+        {/* View More Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.6 }}
           viewport={{ once: true }}
           className="text-center"
         >
-          <a
+          <motion.a
             href="https://github.com/Maxwell-Fernandes?tab=repositories"
             target="_blank"
             rel="noopener noreferrer"
-            className="group inline-flex items-center gap-2 text-xl font-semibold text-cyan-400 hover:text-cyan-300 transition-colors"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-gray-800 to-gray-900 hover:from-cyan-600 hover:to-purple-600 text-white rounded-xl font-semibold shadow-xl hover:shadow-cyan-500/50 transition-all duration-300 border border-gray-700 hover:border-cyan-500"
           >
-            <span>View More Projects on GitHub</span>
+            <span className="text-lg">Explore More Projects</span>
             <motion.div
-              className="group-hover:translate-x-1 transition-transform"
-              whileHover={{ scale: 1.1 }}
+              animate={{ x: [0, 5, 0] }}
+              transition={{ duration: 1.5, repeat: Infinity }}
             >
               <FiArrowRight className="text-2xl" />
             </motion.div>
-          </a>
+          </motion.a>
         </motion.div>
       </div>
     </section>

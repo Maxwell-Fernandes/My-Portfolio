@@ -96,3 +96,18 @@ h1, h2, h3 {
   scrollbar-width: thin;
   scrollbar-color: #06b6d4 #111827;
 }
+
+/* Animated gradient border for project cards */
+@keyframes gradient-xy {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-gradient-xy {
+  background-size: 400% 400%;
+  animation: gradient-xy 3s ease infinite;
+}
