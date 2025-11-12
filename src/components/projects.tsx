@@ -21,13 +21,15 @@ const projects: Project[] = [
   {
     title: "Quickart Admin",
     description: "Admin dashboard application for Quickart built with Dart. Manage inventory, track orders, and handle user management with an intuitive interface.",
-    image: "/projects/quickart-admin.png", // Add your project screenshot
+    // TODO: Add project screenshot at /public/projects/quickart-admin.png
+    image: "/projects/quickart-admin.png",
     tags: ["Dart", "Flutter", "Firebase", "State Management"],
     github: "https://github.com/Maxwell-Fernandes/Quickart-Admin",
   },
   {
     title: "Download Accelerator",
     description: "A multi-threaded download accelerator written in Java that speeds up file downloads by splitting them into multiple chunks. Features include pause/resume functionality, graceful shutdown, and encrypted metadata storage.",
+    // TODO: Add project screenshot at /public/projects/download-accelerator.png
     image: "/projects/download-accelerator.png",
     tags: ["Java", "Multi-threading", "File Handling", "Encryption", "Network Programming"],
     github: "https://github.com/Maxwell-Fernandes/Download-Accelerator",
@@ -35,6 +37,7 @@ const projects: Project[] = [
   {
     title: "Toralizer",
     description: "A Linux command-line proxy server implemented in advanced C. Provides secure and efficient network routing capabilities with low-level system programming concepts.",
+    // TODO: Add project screenshot at /public/projects/toralizer.png
     image: "/projects/toralizer.png",
     tags: ["C", "Linux", "Networking", "System Programming", "Proxy Server"],
     github: "https://github.com/Maxwell-Fernandes/Toralizer",
@@ -42,6 +45,7 @@ const projects: Project[] = [
   {
     title: "Road Pothole Detection",
     description: "An innovative system that uses computer vision and deep learning to detect and analyze road potholes in real-time. Built with Python and advanced ML frameworks to improve road safety and maintenance.",
+    // TODO: Add project screenshot at /public/projects/pothole.png
     image: "/projects/pothole.png",
     tags: ["Python", "Computer Vision", "Deep Learning", "OpenCV", "Machine Learning"],
     github: "https://github.com/Maxwell-Fernandes/RoadPotholeDetection",

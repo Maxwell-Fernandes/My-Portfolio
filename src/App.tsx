@@ -23,15 +23,24 @@ function App() {
       smoothWheel: true,
     });
 
+    let rafId: number;
+
     function raf(time: number) {
       lenis.raf(time);
-      requestAnimationFrame(raf);
+      rafId = requestAnimationFrame(raf);
     }
 
-    requestAnimationFrame(raf);
+    rafId = requestAnimationFrame(raf);
 
     // Simulate loading time
-    setTimeout(() => setIsLoading(false), 2000);
+    const timeoutId = setTimeout(() => setIsLoading(false), 2000);
+
+    // Cleanup function to prevent memory leak
+    return () => {
+      cancelAnimationFrame(rafId);
+      lenis.destroy();
+      clearTimeout(timeoutId);
+    };
   }, []);
 
   return (
@@ -53,7 +62,7 @@ function App() {
           >
             <Navbar />
             <main className="relative z-10">
-              <Hero name="Maxwell" />
+              <Hero />
               <About />
               <Skills />
               <Projects />

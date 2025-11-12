@@ -1,11 +1,7 @@
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 
-interface HeroProps {
-  name: string;
-}
-
-const Hero: React.FC<HeroProps> = () => {
+const Hero: React.FC = () => {
   const [text, setText] = useState("");
   const fullText = "Maxwell Fernandes";
 
@@ -18,7 +14,7 @@ const Hero: React.FC<HeroProps> = () => {
 
       return () => clearTimeout(timeout);
     }
-  }, [text]);
+  }, [text, fullText]);
 
   const handleViewWork = () => {
     document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
