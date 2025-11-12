@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
+import MagneticWrapper from "./MagneticWrapper";
 
 const Hero: React.FC = () => {
   const [text, setText] = useState("");
@@ -46,23 +47,27 @@ const Hero: React.FC = () => {
         Computer Engineering Student & Software Developer
       </p>
       <div className="flex flex-col sm:flex-row gap-4 mt-6">
-        <motion.button
-          onClick={handleViewWork}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-          className="glow-button"
-        >
-          View My Work
-        </motion.button>
-        <motion.a
-          href="/assets/resume/resume.pdf"
-          download="Maxwell_Resume.pdf"
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-          className="inline-block bg-cyan-500 text-white font-bold py-3 px-6 rounded-full shadow-md hover:bg-cyan-400 transition"
-        >
-          📄 Download Resume
-        </motion.a>
+        <MagneticWrapper strength={0.4}>
+          <motion.button
+            onClick={handleViewWork}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            className="glow-button"
+          >
+            View My Work
+          </motion.button>
+        </MagneticWrapper>
+        <MagneticWrapper strength={0.4}>
+          <motion.a
+            href="/assets/resume/resume.pdf"
+            download="Maxwell_Resume.pdf"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            className="inline-block bg-cyan-500 text-white font-bold py-3 px-6 rounded-full shadow-md hover:bg-cyan-400 transition"
+          >
+            📄 Download Resume
+          </motion.a>
+        </MagneticWrapper>
       </div>
     </motion.section>
   );
