@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useState, useEffect, memo } from "react";
 import MagneticWrapper from "./MagneticWrapper";
+import { FiDownload } from "react-icons/fi";
 
 const Hero: React.FC = memo(() => {
   const [text, setText] = useState("");
@@ -63,9 +64,10 @@ const Hero: React.FC = memo(() => {
             download="Maxwell_Resume.pdf"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
-            className="inline-block bg-cyan-500 text-white font-bold py-3 px-6 rounded-full shadow-md hover:bg-cyan-400 transition"
+            className="inline-flex items-center gap-2 bg-cyan-500 text-white font-bold py-3 px-6 rounded-full shadow-md hover:bg-cyan-400 transition"
           >
-            📄 Download Resume
+            <FiDownload />
+            Download Resume
           </motion.a>
         </MagneticWrapper>
       </div>

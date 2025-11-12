@@ -1,5 +1,5 @@
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { FiGithub, FiExternalLink, FiArrowRight, FiCode } from "react-icons/fi";
+import { FiGithub, FiExternalLink, FiArrowRight, FiCode, FiStar, FiFolder } from "react-icons/fi";
 import { memo, useRef, useState } from "react";
 
 interface Project {
@@ -119,11 +119,11 @@ const ProjectCard: React.FC<ProjectCardProps> = memo(({ project, index }) => {
       onMouseLeave={handleMouseLeave}
       className="relative group"
     >
-      {/* Animated gradient border */}
-      <div className="absolute -inset-0.5 bg-gradient-to-r from-cyan-500 via-purple-500 to-cyan-500 rounded-2xl opacity-0 group-hover:opacity-100 blur-sm transition-opacity duration-500 animate-gradient-xy" />
+      {/* Animated border glow */}
+      <div className="absolute -inset-0.5 bg-cyan-500 rounded-xl opacity-0 group-hover:opacity-20 blur transition-opacity duration-500" />
 
-      {/* Glass card */}
-      <div className="relative bg-gray-900/70 backdrop-blur-xl rounded-2xl overflow-hidden border border-gray-800/50 hover:border-cyan-500/50 transition-all duration-500">
+      {/* Card */}
+      <div className="relative bg-gray-900 rounded-xl overflow-hidden border border-gray-800 hover:border-cyan-500 transition-all duration-300 shadow-lg">
         {/* Project Image with parallax */}
         <div className="relative h-64 md:h-80 overflow-hidden">
           {/* Overlay gradient */}
@@ -132,12 +132,13 @@ const ProjectCard: React.FC<ProjectCardProps> = memo(({ project, index }) => {
           {/* Featured badge */}
           {project.featured && (
             <motion.div
-              initial={{ scale: 0, rotate: -12 }}
-              animate={{ scale: 1, rotate: -12 }}
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
               transition={{ delay: index * 0.1 + 0.3, type: "spring" }}
-              className="absolute top-4 left-4 z-20 bg-gradient-to-r from-cyan-500 to-purple-500 text-white px-4 py-1.5 rounded-full text-sm font-semibold shadow-lg"
+              className="absolute top-4 left-4 z-20 bg-cyan-500 text-white px-3 py-1.5 rounded-lg text-sm font-semibold shadow-lg flex items-center gap-1.5"
             >
-              ⭐ Featured
+              <FiStar className="text-sm" />
+              Featured
             </motion.div>
           )}
 
@@ -154,7 +155,7 @@ const ProjectCard: React.FC<ProjectCardProps> = memo(({ project, index }) => {
 
           {/* Glowing effect on hover */}
           <motion.div
-            className="absolute inset-0 bg-gradient-to-t from-cyan-500/20 to-transparent"
+            className="absolute inset-0 bg-cyan-500/10"
             initial={{ opacity: 0 }}
             animate={{ opacity: isHovered ? 1 : 0 }}
             transition={{ duration: 0.3 }}
@@ -165,7 +166,7 @@ const ProjectCard: React.FC<ProjectCardProps> = memo(({ project, index }) => {
         <div className="relative p-6 md:p-8" style={{ transform: "translateZ(50px)" }}>
           {/* Title with icon */}
           <div className="flex items-start justify-between gap-4 mb-4">
-            <h3 className="text-2xl md:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400">
+            <h3 className="text-2xl md:text-3xl font-bold text-cyan-400">
               {project.title}
             </h3>
             <motion.div
@@ -182,7 +183,7 @@ const ProjectCard: React.FC<ProjectCardProps> = memo(({ project, index }) => {
             {project.description}
           </p>
 
-          {/* Tech Stack with improved design */}
+          {/* Tech Stack */}
           <div className="flex flex-wrap gap-2 mb-6">
             {project.tags.slice(0, 4).map((tag, i) => (
               <motion.span
@@ -191,27 +192,27 @@ const ProjectCard: React.FC<ProjectCardProps> = memo(({ project, index }) => {
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ delay: index * 0.1 + i * 0.05 }}
                 viewport={{ once: true }}
-                className="px-3 py-1.5 bg-gradient-to-r from-cyan-500/10 to-purple-500/10 border border-cyan-500/30 text-cyan-300 rounded-lg text-sm font-medium backdrop-blur-sm hover:border-cyan-400 hover:shadow-lg hover:shadow-cyan-500/20 transition-all duration-300"
+                className="px-3 py-1 bg-cyan-500/10 text-cyan-400 rounded-full text-sm border border-cyan-500/30 hover:bg-cyan-500/20 hover:border-cyan-500 transition-all duration-300"
               >
                 {tag}
               </motion.span>
             ))}
             {project.tags.length > 4 && (
-              <span className="px-3 py-1.5 bg-gray-800/50 text-gray-400 rounded-lg text-sm">
+              <span className="px-3 py-1 bg-gray-800 text-gray-400 rounded-full text-sm">
                 +{project.tags.length - 4} more
               </span>
             )}
           </div>
 
-          {/* Links with enhanced design */}
+          {/* Links */}
           <div className="flex flex-wrap gap-4">
             <motion.a
               href={project.github}
               target="_blank"
               rel="noopener noreferrer"
-              whileHover={{ scale: 1.05, y: -2 }}
+              whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-gray-800 to-gray-900 hover:from-cyan-600 hover:to-purple-600 text-white rounded-lg font-medium shadow-lg hover:shadow-cyan-500/50 transition-all duration-300 border border-gray-700 hover:border-cyan-500"
+              className="flex items-center gap-2 px-5 py-2.5 bg-gray-800 hover:bg-cyan-500 text-white rounded-lg font-medium shadow-md hover:shadow-lg transition-all duration-300 border border-gray-700 hover:border-cyan-500"
             >
               <FiGithub className="text-lg" />
               <span>View Code</span>
@@ -222,9 +223,9 @@ const ProjectCard: React.FC<ProjectCardProps> = memo(({ project, index }) => {
                 href={project.demo}
                 target="_blank"
                 rel="noopener noreferrer"
-                whileHover={{ scale: 1.05, y: -2 }}
+                whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 text-white rounded-lg font-medium shadow-lg hover:shadow-purple-500/50 transition-all duration-300"
+                className="flex items-center gap-2 px-5 py-2.5 bg-cyan-500 hover:bg-cyan-400 text-white rounded-lg font-medium shadow-md hover:shadow-lg transition-all duration-300"
               >
                 <FiExternalLink className="text-lg" />
                 <span>Live Demo</span>
@@ -241,40 +242,21 @@ ProjectCard.displayName = 'ProjectCard';
 
 const Projects: React.FC = memo(() => {
   return (
-    <section id="projects" className="relative py-20 px-6 bg-black overflow-hidden">
-      {/* Animated background elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan-500/5 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: "1s" }} />
-      </div>
-
-      <div className="relative max-w-7xl mx-auto">
+    <section id="projects" className="py-20 px-6 bg-black">
+      <div className="max-w-6xl mx-auto">
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: -30 }}
+          initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.5 }}
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <motion.div
-            initial={{ scale: 0 }}
-            whileInView={{ scale: 1 }}
-            transition={{ duration: 0.5, type: "spring" }}
-            viewport={{ once: true }}
-            className="inline-block mb-4"
-          >
-            <span className="px-4 py-2 bg-gradient-to-r from-cyan-500/10 to-purple-500/10 border border-cyan-500/30 rounded-full text-cyan-400 text-sm font-medium">
-              🚀 My Work
-            </span>
-          </motion.div>
-
-          <h2 className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-400 to-cyan-400 mb-4">
+          <h2 className="text-4xl font-bold text-cyan-400 mb-4">
             Featured Projects
           </h2>
-
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            A showcase of my best work in software development, from mobile apps to system-level programming
+          <p className="text-gray-300 text-lg">
+            A showcase of my best work in software development
           </p>
         </motion.div>
 
@@ -289,7 +271,7 @@ const Projects: React.FC = memo(() => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.5 }}
           viewport={{ once: true }}
           className="text-center"
         >
@@ -299,15 +281,11 @@ const Projects: React.FC = memo(() => {
             rel="noopener noreferrer"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-gray-800 to-gray-900 hover:from-cyan-600 hover:to-purple-600 text-white rounded-xl font-semibold shadow-xl hover:shadow-cyan-500/50 transition-all duration-300 border border-gray-700 hover:border-cyan-500"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-cyan-500 hover:bg-cyan-400 text-white rounded-lg font-semibold shadow-md transition-all duration-300"
           >
-            <span className="text-lg">Explore More Projects</span>
-            <motion.div
-              animate={{ x: [0, 5, 0] }}
-              transition={{ duration: 1.5, repeat: Infinity }}
-            >
-              <FiArrowRight className="text-2xl" />
-            </motion.div>
+            <FiFolder className="text-lg" />
+            <span>View More Projects on GitHub</span>
+            <FiArrowRight className="text-lg" />
           </motion.a>
         </motion.div>
       </div>
