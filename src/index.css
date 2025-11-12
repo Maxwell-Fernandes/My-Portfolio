@@ -71,3 +71,28 @@ a, button {
 h1, h2, h3 {
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
 }
+
+/* Custom scrollbar for terminal */
+.scrollbar-thin::-webkit-scrollbar {
+  width: 8px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: #111827;
+  border-radius: 4px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: #06b6d4;
+  border-radius: 4px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background: #0891b2;
+}
+
+/* Firefox scrollbar */
+.scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: #06b6d4 #111827;
+}

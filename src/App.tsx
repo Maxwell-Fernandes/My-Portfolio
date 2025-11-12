@@ -11,6 +11,7 @@ import CustomCursor from './components/CustomCursor';
 import SocialLinks from './components/SocialLinks';
 import LoadingScreen from './components/LoadingScreen';
 import Skills from './components/Skills';
+import Terminal from './components/Terminal';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -48,7 +49,8 @@ function App() {
       <CustomCursor />
       <StarsBackground />
       <SocialLinks />
-      
+      <Terminal />
+
       <AnimatePresence mode='wait'>
         {isLoading ? (
           <LoadingScreen key="loading" />
