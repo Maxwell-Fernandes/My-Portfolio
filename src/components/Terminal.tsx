@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, memo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import React from 'react';
 
@@ -8,7 +8,7 @@ interface CommandOutput {
   timestamp: Date;
 }
 
-const Terminal: React.FC = () => {
+const Terminal: React.FC = memo(() => {
   const [input, setInput] = useState('');
   const [history, setHistory] = useState<CommandOutput[]>([]);
   const [commandHistory, setCommandHistory] = useState<string[]>([]);
@@ -239,20 +239,88 @@ Type 'help' to see available commands.
 
   return (
     <>
-      {/* Terminal Toggle Button */}
-      <motion.button
-        onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-8 right-8 z-40 bg-cyan-500 text-white p-4 rounded-full shadow-lg hover:bg-cyan-600 transition-colors"
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
-        initial={{ opacity: 0, scale: 0 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ delay: 2 }}
+      {/* Terminal Toggle Button - Enhanced with animations */}
+      <motion.div
+        className="fixed bottom-8 right-8 z-40"
+        initial={{ opacity: 0, scale: 0, y: 100 }}
+        animate={{
+          opacity: 1,
+          scale: 1,
+          y: 0,
+        }}
+        transition={{
+          delay: 2,
+          type: "spring",
+          stiffness: 260,
+          damping: 20
+        }}
       >
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-        </svg>
-      </motion.button>
+        {/* Pulsing glow ring */}
+        <motion.div
+          className="absolute inset-0 rounded-full bg-cyan-500/30 blur-xl"
+          animate={{
+            scale: [1, 1.3, 1],
+            opacity: [0.5, 0.8, 0.5],
+          }}
+          transition={{
+            duration: 2,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+
+        {/* Main button */}
+        <motion.button
+          onClick={() => setIsOpen(!isOpen)}
+          className="relative bg-gradient-to-br from-cyan-500 to-cyan-600 text-white p-4 rounded-full shadow-2xl hover:from-cyan-600 hover:to-cyan-700 transition-all duration-300 border-2 border-cyan-400/50"
+          whileHover={{
+            scale: 1.15,
+            boxShadow: "0 0 40px rgba(34, 211, 238, 0.6)",
+          }}
+          whileTap={{ scale: 0.95 }}
+          animate={{
+            y: [0, -8, 0],
+          }}
+          transition={{
+            y: {
+              duration: 2,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }
+          }}
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+          </svg>
+
+          {/* Notification dot when not open */}
+          {!isOpen && (
+            <motion.span
+              className="absolute -top-1 -right-1 h-3 w-3 bg-green-400 rounded-full border-2 border-gray-900"
+              animate={{
+                scale: [1, 1.2, 1],
+              }}
+              transition={{
+                duration: 1.5,
+                repeat: Infinity,
+              }}
+            />
+          )}
+        </motion.button>
+
+        {/* Tooltip hint */}
+        {!isOpen && (
+          <motion.div
+            className="absolute bottom-full right-0 mb-2 px-3 py-1 bg-cyan-500 text-white text-sm rounded-lg whitespace-nowrap pointer-events-none"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 3.5 }}
+          >
+            Try the terminal! 💻
+            <div className="absolute -bottom-1 right-4 w-2 h-2 bg-cyan-500 rotate-45"></div>
+          </motion.div>
+        )}
+      </motion.div>
 
       {/* Terminal Window */}
       <AnimatePresence>
@@ -342,6 +410,8 @@ Type 'help' to see available commands.
       </AnimatePresence>
     </>
   );
-};
+});
+
+Terminal.displayName = 'Terminal';
 
 export default Terminal;

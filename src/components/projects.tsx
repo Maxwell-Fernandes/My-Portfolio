@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { FiGithub, FiExternalLink, FiArrowRight } from "react-icons/fi";
+import { memo } from "react";
 
 interface Project {
   title: string;
@@ -52,7 +53,7 @@ const projects: Project[] = [
   }
 ];
 
-const Projects: React.FC = () => {
+const Projects: React.FC = memo(() => {
   return (
     <section id="projects" className="py-20 px-6 bg-black">
       <div className="max-w-6xl mx-auto">
@@ -167,6 +168,8 @@ const Projects: React.FC = () => {
       </div>
     </section>
   );
-};
+});
+
+Projects.displayName = 'Projects';
 
 export default Projects;

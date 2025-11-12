@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
+import { memo } from 'react';
 
-const LoadingScreen = () => {
+const LoadingScreen = memo(() => {
   return (
     <motion.div
       className="fixed inset-0 z-50 flex items-center justify-center bg-black"
@@ -18,6 +19,8 @@ const LoadingScreen = () => {
       </motion.div>
     </motion.div>
   );
-};
+});
+
+LoadingScreen.displayName = 'LoadingScreen';
 
 export default LoadingScreen; 

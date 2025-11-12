@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
-import { useState, useEffect } from "react";
+import { useState, useEffect, memo } from "react";
 import MagneticWrapper from "./MagneticWrapper";
 
-const Hero: React.FC = () => {
+const Hero: React.FC = memo(() => {
   const [text, setText] = useState("");
   const fullText = "Maxwell Fernandes";
 
@@ -71,6 +71,8 @@ const Hero: React.FC = () => {
       </div>
     </motion.section>
   );
-};
+});
+
+Hero.displayName = 'Hero';
 
 export default Hero;

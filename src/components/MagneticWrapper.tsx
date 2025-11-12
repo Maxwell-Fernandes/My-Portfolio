@@ -1,4 +1,4 @@
-import { useRef, ReactNode } from 'react';
+import { useRef, ReactNode, memo } from 'react';
 import { motion, useSpring } from 'framer-motion';
 
 interface MagneticWrapperProps {
@@ -15,7 +15,7 @@ interface MagneticWrapperProps {
  *   <button>Click me</button>
  * </MagneticWrapper>
  */
-const MagneticWrapper: React.FC<MagneticWrapperProps> = ({
+const MagneticWrapper: React.FC<MagneticWrapperProps> = memo(({
   children,
   className = '',
   strength = 0.3,
@@ -61,6 +61,8 @@ const MagneticWrapper: React.FC<MagneticWrapperProps> = ({
       {children}
     </motion.div>
   );
-};
+});
+
+MagneticWrapper.displayName = 'MagneticWrapper';
 
 export default MagneticWrapper;

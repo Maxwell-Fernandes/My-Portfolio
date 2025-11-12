@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { memo } from "react";
 
 const skills = [
   // Development
@@ -39,7 +40,7 @@ const skills = [
   { name: "Vim", icon: "/icons/vim.svg", level: "Very Good" },
 ];
 
-const Skills: React.FC = () => {
+const Skills: React.FC = memo(() => {
   return (
     <section id="skills" className="py-20 px-6 bg-black">
       <div className="max-w-6xl mx-auto">
@@ -84,6 +85,8 @@ const Skills: React.FC = () => {
       </div>
     </section>
   );
-};
+});
+
+Skills.displayName = 'Skills';
 
 export default Skills; 
