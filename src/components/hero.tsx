@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useState, useEffect, memo } from "react";
 import MagneticWrapper from "./MagneticWrapper";
+import ScrollDownIndicator from "./ScrollDownIndicator";
 import { FiDownload } from "react-icons/fi";
 
 const Hero: React.FC = memo(() => {
@@ -28,7 +29,7 @@ const Hero: React.FC = memo(() => {
       initial={{ opacity: 0, y: -50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 1 }}
-      className="flex flex-col items-center justify-center h-screen text-center"
+      className="relative flex flex-col items-center justify-center h-screen text-center"
     >
       <motion.div
         initial={{ opacity: 0 }}
@@ -71,6 +72,9 @@ const Hero: React.FC = memo(() => {
           </motion.a>
         </MagneticWrapper>
       </div>
+
+      {/* Scroll Down Indicator */}
+      <ScrollDownIndicator />
     </motion.section>
   );
 });

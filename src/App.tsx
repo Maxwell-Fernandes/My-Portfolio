@@ -12,6 +12,9 @@ import SocialLinks from './components/SocialLinks';
 import LoadingScreen from './components/LoadingScreen';
 import Skills from './components/Skills';
 import Terminal from './components/Terminal';
+import ScrollProgress from './components/ScrollProgress';
+import CommandPalette from './components/CommandPalette';
+import CodeRain from './components/CodeRain';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -47,7 +50,10 @@ function App() {
   return (
     <>
       <CustomCursor />
+      <CodeRain />
       <StarsBackground />
+      <ScrollProgress />
+      <CommandPalette />
       <SocialLinks />
       <Terminal />
 
