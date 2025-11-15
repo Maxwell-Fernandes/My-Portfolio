@@ -1,37 +1,29 @@
 import { motion } from "framer-motion";
-
-// interface Skill {
-//   name: string;
-//   level: string;
-//   icon: string;
-// }
+import { memo } from "react";
 
 const skills = [
   // Development
   { name: "Java", icon: "/icons/java.svg", level: "Proficient" },
   { name: "Python", icon: "/icons/python.svg", level: "Good" },
   { name: "C++", icon: "/icons/cpp.svg", level: "Very Good" },
-  {name: "C", icon: "/icons/c.svg", level: "Very Good" },
-  {name:"Dart", icon:"/icons/dart.svg",level:"Very Good"},
+  { name: "C", icon: "/icons/c.svg", level: "Very Good" },
+  { name: "Dart", icon: "/icons/dart.svg", level: "Very Good" },
   { name: "JavaScript", icon: "/icons/javascript.svg", level: "Very Good" },
   { name: "TypeScript", icon: "/icons/typescript.svg", level: "Very Good" },
 
-
-  
-  
   // Databases
   { name: "MySQL", icon: "/icons/mysql.svg", level: "Proficient" },
   { name: "MongoDB", icon: "/icons/mongodb.svg", level: "Good" },
   { name: "Graphql", icon: "/icons/graphql.svg", level: "Beginner" },
-  {name:"firebase", icon: "/icons/firebase.svg", level: "Good" },
+  { name: "Firebase", icon: "/icons/firebase.svg", level: "Good" },
   
   // Frontend
   { name: "HTML5", icon: "/icons/html.svg", level: "Proficient" },
   { name: "CSS3", icon: "/icons/css.svg", level: "Very Good" },
   { name: "React.js", icon: "/icons/react.svg", level: "Very Good" },
-  
+
   // Tools & Others
-  {name:"Flutter", icon: "/icons/flutter.svg", level: "Good" },
+  { name: "Flutter", icon: "/icons/flutter.svg", level: "Good" },
   { name: "Redux", icon: "/icons/redux.svg", level: "Very Good" },
   { name: "Bootstrap", icon: "/icons/bootstrap.svg", level: "Good" },
   { name: "Tailwind", icon: "/icons/tailwind.svg", level: "Very Good" },
@@ -48,7 +40,7 @@ const skills = [
   { name: "Vim", icon: "/icons/vim.svg", level: "Very Good" },
 ];
 
-const Skills: React.FC = () => {
+const Skills: React.FC = memo(() => {
   return (
     <section id="skills" className="py-20 px-6 bg-black">
       <div className="max-w-6xl mx-auto">
@@ -93,6 +85,8 @@ const Skills: React.FC = () => {
       </div>
     </section>
   );
-};
+});
+
+Skills.displayName = 'Skills';
 
 export default Skills; 

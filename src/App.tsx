@@ -11,6 +11,10 @@ import CustomCursor from './components/CustomCursor';
 import SocialLinks from './components/SocialLinks';
 import LoadingScreen from './components/LoadingScreen';
 import Skills from './components/Skills';
+import Terminal from './components/Terminal';
+import ScrollProgress from './components/ScrollProgress';
+import CommandPalette from './components/CommandPalette';
+import CodeRain from './components/CodeRain';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -23,23 +27,36 @@ function App() {
       smoothWheel: true,
     });
 
+    let rafId: number;
+
     function raf(time: number) {
       lenis.raf(time);
-      requestAnimationFrame(raf);
+      rafId = requestAnimationFrame(raf);
     }
 
-    requestAnimationFrame(raf);
+    rafId = requestAnimationFrame(raf);
 
     // Simulate loading time
-    setTimeout(() => setIsLoading(false), 2000);
+    const timeoutId = setTimeout(() => setIsLoading(false), 2000);
+
+    // Cleanup function to prevent memory leak
+    return () => {
+      cancelAnimationFrame(rafId);
+      lenis.destroy();
+      clearTimeout(timeoutId);
+    };
   }, []);
 
   return (
     <>
       <CustomCursor />
+      <CodeRain />
       <StarsBackground />
+      <ScrollProgress />
+      <CommandPalette />
       <SocialLinks />
-      
+      <Terminal />
+
       <AnimatePresence mode='wait'>
         {isLoading ? (
           <LoadingScreen key="loading" />
@@ -53,7 +70,7 @@ function App() {
           >
             <Navbar />
             <main className="relative z-10">
-              <Hero name="Maxwell" />
+              <Hero />
               <About />
               <Skills />
               <Projects />

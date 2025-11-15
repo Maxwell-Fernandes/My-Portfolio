@@ -1,11 +1,10 @@
 import { motion } from "framer-motion";
-import { useState, useEffect } from "react";
+import { useState, useEffect, memo } from "react";
+import MagneticWrapper from "./MagneticWrapper";
+import ScrollDownIndicator from "./ScrollDownIndicator";
+import { FiDownload } from "react-icons/fi";
 
-interface HeroProps {
-  name: string;
-}
-
-const Hero: React.FC<HeroProps> = () => {
+const Hero: React.FC = memo(() => {
   const [text, setText] = useState("");
   const fullText = "Maxwell Fernandes";
 
@@ -18,7 +17,7 @@ const Hero: React.FC<HeroProps> = () => {
 
       return () => clearTimeout(timeout);
     }
-  }, [text]);
+  }, [text, fullText]);
 
   const handleViewWork = () => {
     document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
@@ -30,7 +29,7 @@ const Hero: React.FC<HeroProps> = () => {
       initial={{ opacity: 0, y: -50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 1 }}
-      className="flex flex-col items-center justify-center h-screen text-center"
+      className="relative flex flex-col items-center justify-center h-screen text-center"
     >
       <motion.div
         initial={{ opacity: 0 }}
@@ -50,26 +49,36 @@ const Hero: React.FC<HeroProps> = () => {
         Computer Engineering Student & Software Developer
       </p>
       <div className="flex flex-col sm:flex-row gap-4 mt-6">
-        <motion.button
-          onClick={handleViewWork}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-          className="glow-button"
-        >
-          View My Work
-        </motion.button>
-        <motion.a
-          href="/assets/resume/resume.pdf"
-          download="Maxwell_Resume.pdf"
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-          className="inline-block bg-cyan-500 text-white font-bold py-3 px-6 rounded-full shadow-md hover:bg-cyan-400 transition"
-        >
-          📄 Download Resume
-        </motion.a>
+        <MagneticWrapper strength={0.4}>
+          <motion.button
+            onClick={handleViewWork}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            className="glow-button"
+          >
+            View My Work
+          </motion.button>
+        </MagneticWrapper>
+        <MagneticWrapper strength={0.4}>
+          <motion.a
+            href="/assets/resume/resume.pdf"
+            download="Maxwell_Resume.pdf"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            className="inline-flex items-center gap-2 bg-cyan-500 text-white font-bold py-3 px-6 rounded-full shadow-md hover:bg-cyan-400 transition"
+          >
+            <FiDownload />
+            Download Resume
+          </motion.a>
+        </MagneticWrapper>
       </div>
+
+      {/* Scroll Down Indicator */}
+      <ScrollDownIndicator />
     </motion.section>
   );
-};
+});
+
+Hero.displayName = 'Hero';
 
 export default Hero;

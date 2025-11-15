@@ -67,12 +67,47 @@ a, button {
   box-shadow: 0 0 30px rgba(34, 211, 238, 0.5);
 }
 
-/* Space-Themed Background */
-body {
-  @apply bg-black text-white; /* Dark mode */
-}
-
 /* Add a soft glow effect to text */
 h1, h2, h3 {
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+/* Custom scrollbar for terminal */
+.scrollbar-thin::-webkit-scrollbar {
+  width: 8px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: #111827;
+  border-radius: 4px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: #06b6d4;
+  border-radius: 4px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background: #0891b2;
+}
+
+/* Firefox scrollbar */
+.scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: #06b6d4 #111827;
+}
+
+/* Animated gradient border for project cards */
+@keyframes gradient-xy {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-gradient-xy {
+  background-size: 400% 400%;
+  animation: gradient-xy 3s ease infinite;
 }

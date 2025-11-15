@@ -14,6 +14,8 @@ const Contact: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    // TODO: Implement actual form submission (e.g., EmailJS, Formspree, or backend API)
+    // Currently just shows an alert without sending the data anywhere
     alert("Thank you for reaching out! I'll get back to you soon.");
     setFormData({ name: "", email: "", message: "" }); // Reset form
   };
@@ -86,10 +88,10 @@ const Contact: React.FC = () => {
 
         {/* Social Links */}
         <div className="mt-6 flex justify-center space-x-4">
-          <a href="https://github.com/Maxwell-Fernandes/Maxwell-Fernandes" target="_blank" className="text-cyan-400 hover:text-white transition">
+          <a href="https://github.com/Maxwell-Fernandes/Maxwell-Fernandes" target="_blank" rel="noopener noreferrer" className="text-cyan-400 hover:text-white transition">
             GitHub
           </a>
-          <a href="https://www.linkedin.com/in/maxwell-fernandes-a37007270/" target="_blank" className="text-cyan-400 hover:text-white transition">
+          <a href="https://www.linkedin.com/in/maxwell-fernandes-a37007270/" target="_blank" rel="noopener noreferrer" className="text-cyan-400 hover:text-white transition">
             LinkedIn
           </a>
         </div>

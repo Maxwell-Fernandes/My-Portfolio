@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
+import { memo } from "react";
 
-const About: React.FC = () => {
+const About: React.FC = memo(() => {
   const handleContactClick = () => {
     document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -36,12 +37,6 @@ const About: React.FC = () => {
              My expertise lies in web and mobile development, where I utilize languages such as Java, Python, and JavaScript to create scalable applications that address complex challenges. Proficient in ReactJS for building dynamic user interfaces and Flutter with Dart for crafting cross-platform mobile applications, I am dedicated to delivering high-quality code and innovative solutions that enhance user experiences.
             </p>
 
-            {/* <p className="text-gray-300 leading-relaxed">
-              Currently expanding my knowledge in cloud and big data technologies while maintaining 
-              a strong foundation in core development principles. I strive to create seamless user 
-              experiences while writing clean, maintainable code.
-            </p> */}
-
             <div className="grid grid-cols-2 gap-4 my-6">
               <div>
                 <h4 className="text-cyan-400 font-semibold">Location</h4>
@@ -57,7 +52,7 @@ const About: React.FC = () => {
               </div>
               <div>
                 <h4 className="text-cyan-400 font-semibold">Interests</h4>
-                <p className="text-gray-300">System Design,Machine Learning</p>
+                <p className="text-gray-300">System Design, Machine Learning</p>
               </div>
             </div>
 
@@ -117,6 +112,8 @@ const About: React.FC = () => {
       </div>
     </section>
   );
-};
+});
+
+About.displayName = 'About';
 
 export default About;
