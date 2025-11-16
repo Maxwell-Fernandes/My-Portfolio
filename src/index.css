@@ -95,13 +95,6 @@
 
 html {
   scroll-behavior: smooth;
-  cursor: none; /* Hide default cursor */
-}
-
-@media (max-width: 768px) {
-  html {
-    cursor: auto; /* Show default cursor on mobile */
-  }
 }
 
 body {
@@ -113,17 +106,6 @@ body {
   background-image: url("https://source.unsplash.com/1600x900/?space,stars,nebula");
   background-size: cover;
   background-attachment: fixed;
-}
-
-/* Hide cursor on clickable elements */
-a, button {
-  cursor: none;
-}
-
-@media (max-width: 768px) {
-  a, button {
-    cursor: pointer;
-  }
 }
 
 /* Smooth scrolling container */
