@@ -273,7 +273,7 @@ Type 'help' to see available commands.
         <motion.button
           onClick={() => setIsOpen(!isOpen)}
           data-terminal-toggle="true"
-          className="relative bg-gradient-to-br from-[var(--primary)] to-[var(--hover-primary)] text-white p-4 rounded-full shadow-2xl hover:from-[var(--hover-primary)] hover:to-[var(--active-primary)] transition-all duration-300 border-2 border-[var(--primary)]/50"
+          className="relative bg-gradient-to-br from-[var(--primary)] to-[var(--hover-primary)] text-white p-4 rounded-full shadow-2xl hover:from-[var(--hover-primary)] hover:to-[var(--active-primary)] transition-all [var(--transition-base)] border-2 border-[var(--primary)]/50"
           whileHover={{
             scale: 1.15,
             boxShadow: "0 0 40px rgba(34, 211, 238, 0.6)",

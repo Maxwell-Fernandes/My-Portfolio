@@ -61,7 +61,7 @@ const About: React.FC = memo(() => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="bg-[var(--primary)] text-white px-8 py-3 rounded-full font-semibold
-                         hover:bg-[var(--hover-primary)] transition-all duration-300 shadow-lg
+                         hover:bg-[var(--hover-primary)] transition-all [var(--transition-base)] shadow-lg
                          hover:shadow-[var(--primary)]/50"
             >
               Contact Me

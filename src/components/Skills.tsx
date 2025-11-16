@@ -64,7 +64,7 @@ const Skills: React.FC = memo(() => {
               viewport={{ once: true }}
               className="relative group"
             >
-              <div className="flex flex-col items-center justify-center p-4 rounded-lg border border-[var(--light-grey)] bg-[var(--bg-secondary)]/50 backdrop-blur-sm hover:border-[var(--primary)]/50 transition-all duration-300">
+              <div className="flex flex-col items-center justify-center p-4 rounded-lg border border-[var(--light-grey)] bg-[var(--bg-secondary)]/50 backdrop-blur-sm hover:border-[var(--primary)]/50 transition-all [var(--transition-base)]">
                 <img
                   src={skill.icon}
                   alt={skill.name}
@@ -73,7 +73,7 @@ const Skills: React.FC = memo(() => {
                 <span className="text-[var(--light-grey)] text-sm">{skill.name}</span>
                 
                 {/* Hover tooltip */}
-                <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 px-3 py-1 bg-[var(--primary)] text-white text-sm rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+                <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 px-3 py-1 bg-[var(--primary)] text-white text-sm rounded-md opacity-0 group-hover:opacity-100 transition-opacity [var(--transition-base)] whitespace-nowrap">
                   {skill.level}
                   {/* Triangle pointer */}
                   <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-[var(--primary)] rotate-45"></div>
