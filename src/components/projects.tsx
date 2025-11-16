@@ -120,10 +120,10 @@ const ProjectCard: React.FC<ProjectCardProps> = memo(({ project, index }) => {
       className="relative group"
     >
       {/* Animated border glow */}
-      <div className="absolute -inset-0.5 bg-cyan-500 rounded-xl opacity-0 group-hover:opacity-20 blur transition-opacity duration-500" />
+      <div className="absolute -inset-0.5 bg-[var(--primary)] rounded-xl opacity-0 group-hover:opacity-20 blur transition-opacity duration-500" />
 
       {/* Card */}
-      <div className="relative bg-gray-900 rounded-xl overflow-hidden border border-gray-800 hover:border-cyan-500 transition-all duration-300 shadow-lg">
+      <div className="relative bg-gray-900 rounded-xl overflow-hidden border border-gray-800 hover:border-[var(--primary)] transition-all duration-300 shadow-lg">
         {/* Project Image with parallax */}
         <div className="relative h-64 md:h-80 overflow-hidden">
           {/* Overlay gradient */}
@@ -135,7 +135,7 @@ const ProjectCard: React.FC<ProjectCardProps> = memo(({ project, index }) => {
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               transition={{ delay: index * 0.1 + 0.3, type: "spring" }}
-              className="absolute top-4 left-4 z-20 bg-cyan-500 text-white px-3 py-1.5 rounded-lg text-sm font-semibold shadow-lg flex items-center gap-1.5"
+              className="absolute top-4 left-4 z-20 bg-[var(--primary)] text-white px-3 py-1.5 rounded-lg text-sm font-semibold shadow-lg flex items-center gap-1.5"
             >
               <FiStar className="text-sm" />
               Featured
@@ -155,7 +155,7 @@ const ProjectCard: React.FC<ProjectCardProps> = memo(({ project, index }) => {
 
           {/* Glowing effect on hover */}
           <motion.div
-            className="absolute inset-0 bg-cyan-500/10"
+            className="absolute inset-0 bg-[var(--primary)]/10"
             initial={{ opacity: 0 }}
             animate={{ opacity: isHovered ? 1 : 0 }}
             transition={{ duration: 0.3 }}
@@ -166,11 +166,11 @@ const ProjectCard: React.FC<ProjectCardProps> = memo(({ project, index }) => {
         <div className="relative p-6 md:p-8" style={{ transform: "translateZ(50px)" }}>
           {/* Title with icon */}
           <div className="flex items-start justify-between gap-4 mb-4">
-            <h3 className="text-2xl md:text-3xl font-bold text-cyan-400">
+            <h3 className="text-2xl md:text-3xl font-bold text-[var(--primary)]">
               {project.title}
             </h3>
             <motion.div
-              className="text-cyan-400 text-2xl"
+              className="text-[var(--primary)] text-2xl"
               animate={{ rotate: isHovered ? 360 : 0 }}
               transition={{ duration: 0.6 }}
             >
@@ -192,7 +192,7 @@ const ProjectCard: React.FC<ProjectCardProps> = memo(({ project, index }) => {
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ delay: index * 0.1 + i * 0.05 }}
                 viewport={{ once: true }}
-                className="px-3 py-1 bg-cyan-500/10 text-cyan-400 rounded-full text-sm border border-cyan-500/30 hover:bg-cyan-500/20 hover:border-cyan-500 transition-all duration-300"
+                className="px-3 py-1 bg-[var(--primary)]/10 text-[var(--primary)] rounded-full text-sm border border-[var(--primary)]/30 hover:bg-[var(--primary)]/20 hover:border-[var(--primary)] transition-all duration-300"
               >
                 {tag}
               </motion.span>
@@ -212,7 +212,7 @@ const ProjectCard: React.FC<ProjectCardProps> = memo(({ project, index }) => {
               rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="flex items-center gap-2 px-5 py-2.5 bg-gray-800 hover:bg-cyan-500 text-white rounded-lg font-medium shadow-md hover:shadow-lg transition-all duration-300 border border-gray-700 hover:border-cyan-500"
+              className="flex items-center gap-2 px-5 py-2.5 bg-gray-800 hover:bg-[var(--primary)] text-white rounded-lg font-medium shadow-md hover:shadow-lg transition-all duration-300 border border-gray-700 hover:border-[var(--primary)]"
             >
               <FiGithub className="text-lg" />
               <span>View Code</span>
@@ -225,7 +225,7 @@ const ProjectCard: React.FC<ProjectCardProps> = memo(({ project, index }) => {
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="flex items-center gap-2 px-5 py-2.5 bg-cyan-500 hover:bg-cyan-400 text-white rounded-lg font-medium shadow-md hover:shadow-lg transition-all duration-300"
+                className="flex items-center gap-2 px-5 py-2.5 bg-[var(--primary)] hover:bg-[var(--hover-primary)] text-white rounded-lg font-medium shadow-md hover:shadow-lg transition-all duration-300"
               >
                 <FiExternalLink className="text-lg" />
                 <span>Live Demo</span>
@@ -252,7 +252,7 @@ const Projects: React.FC = memo(() => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold text-cyan-400 mb-4">
+          <h2 className="text-4xl font-bold text-[var(--primary)] mb-4">
             Featured Projects
           </h2>
           <p className="text-gray-300 text-lg">
@@ -281,7 +281,7 @@ const Projects: React.FC = memo(() => {
             rel="noopener noreferrer"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="inline-flex items-center gap-2 px-6 py-3 bg-cyan-500 hover:bg-cyan-400 text-white rounded-lg font-semibold shadow-md transition-all duration-300"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-[var(--primary)] hover:bg-[var(--hover-primary)] text-white rounded-lg font-semibold shadow-md transition-all duration-300"
           >
             <FiFolder className="text-lg" />
             <span>View More Projects on GitHub</span>

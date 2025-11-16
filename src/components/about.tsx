@@ -14,7 +14,7 @@ const About: React.FC = memo(() => {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-4xl font-bold text-cyan-400 text-center mb-16"
+          className="text-4xl font-bold text-[var(--primary)] text-center mb-16"
         >
           About Me
         </motion.h2>
@@ -39,19 +39,19 @@ const About: React.FC = memo(() => {
 
             <div className="grid grid-cols-2 gap-4 my-6">
               <div>
-                <h4 className="text-cyan-400 font-semibold">Location</h4>
+                <h4 className="text-[var(--primary)] font-semibold">Location</h4>
                 <p className="text-gray-300">Goa, India</p>
               </div>
               <div>
-                <h4 className="text-cyan-400 font-semibold">LinkedIn</h4>
+                <h4 className="text-[var(--primary)] font-semibold">LinkedIn</h4>
                 <p className="text-gray-300">maxwell-fernandes-a37007270</p>
               </div>
               <div>
-                <h4 className="text-cyan-400 font-semibold">Tech Stack</h4>
+                <h4 className="text-[var(--primary)] font-semibold">Tech Stack</h4>
                 <p className="text-gray-300">React, Java, Python, JavaScript</p>
               </div>
               <div>
-                <h4 className="text-cyan-400 font-semibold">Interests</h4>
+                <h4 className="text-[var(--primary)] font-semibold">Interests</h4>
                 <p className="text-gray-300">System Design, Machine Learning</p>
               </div>
             </div>
@@ -60,7 +60,7 @@ const About: React.FC = memo(() => {
               onClick={handleContactClick}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-cyan-500 text-white px-8 py-3 rounded-full font-semibold 
+              className="bg-[var(--primary)] text-white px-8 py-3 rounded-full font-semibold 
                          hover:bg-cyan-600 transition-all duration-300 shadow-lg 
                          hover:shadow-cyan-500/50"
             >
@@ -78,8 +78,8 @@ const About: React.FC = memo(() => {
           >
             <div className="w-full h-[400px] relative">
               {/* Decorative elements */}
-              <div className="absolute inset-0 bg-cyan-500/10 rounded-lg transform rotate-6"></div>
-              <div className="absolute inset-0 bg-cyan-500/20 rounded-lg transform -rotate-6"></div>
+              <div className="absolute inset-0 bg-[var(--primary)]/10 rounded-lg transform rotate-6"></div>
+              <div className="absolute inset-0 bg-[var(--primary)]/20 rounded-lg transform -rotate-6"></div>
               
               {/* Avatar container */}
               <div className="relative bg-gradient-to-b from-cyan-500/20 to-transparent 
@@ -87,7 +87,7 @@ const About: React.FC = memo(() => {
                 <img
                   src="/images/profile.jpg" // Replace with your avatar/photo path
                   alt="Profile Avatar"
-                  className="w-64 h-64 rounded-full border-4 border-cyan-400/50 shadow-xl"
+                  className="w-64 h-64 rounded-full border-4 border-[var(--primary)]/50 shadow-xl"
                 />
               </div>
             </div>
@@ -96,14 +96,14 @@ const About: React.FC = memo(() => {
             <motion.div
               animate={{ y: [0, -10, 0] }}
               transition={{ duration: 2, repeat: Infinity }}
-              className="absolute -top-4 -right-4 bg-cyan-500 text-white px-4 py-2 rounded-full"
+              className="absolute -top-4 -right-4 bg-[var(--primary)] text-white px-4 py-2 rounded-full"
             >
               Software Developer
             </motion.div>
             <motion.div
               animate={{ y: [0, 10, 0] }}
               transition={{ duration: 2, repeat: Infinity }}
-              className="absolute -bottom-4 -left-4 bg-cyan-500 text-white px-4 py-2 rounded-full"
+              className="absolute -bottom-4 -left-4 bg-[var(--primary)] text-white px-4 py-2 rounded-full"
             >
               Tech Enthusiast
             </motion.div>

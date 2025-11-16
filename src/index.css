@@ -1,8 +1,96 @@
 
 
 @import "tailwindcss";
+
 :root {
   color-scheme: dark;
+
+  /* ==================== COLOR SYSTEM ==================== */
+
+  /* Primary Colors */
+  --primary: #00cfff;
+  --primary-light: #6affb3;
+  --primary-dark: #0068ff;
+  --salad: #00f87a;
+
+  /* Neutral Colors */
+  --dark: #051323;
+  --black: #000000;
+  --dark-grey: #56667a;
+  --grey: #83909e;
+  --light-grey: #9ca4ae;
+  --cristal: #ffffff;
+
+  /* Background Layers */
+  --bg-primary: #051323;
+  --bg-secondary: #0a1e3a;
+  --bg-tertiary: #112d4e;
+  --bg-overlay: rgba(5, 19, 35, 0.95);
+
+  /* Interactive States */
+  --hover-primary: #00e0ff;
+  --hover-secondary: #79f4ff;
+  --active-primary: #00b8e6;
+
+  /* ==================== TYPOGRAPHY ==================== */
+
+  --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+
+  --text-xs: 12px;
+  --text-sm: 14px;
+  --text-base: 16px;
+  --text-lg: 18px;
+  --text-xl: 20px;
+  --text-2xl: 24px;
+  --text-3xl: 32px;
+  --text-4xl: 40px;
+  --text-5xl: 48px;
+  --text-6xl: 64px;
+
+  --font-light: 300;
+  --font-regular: 400;
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
+  --font-extrabold: 800;
+
+  /* ==================== SPACING & LAYOUT ==================== */
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  /* ==================== EFFECTS ==================== */
+
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.15);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.2);
+  --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.3);
+
+  --glow-primary: 0 0 20px rgba(0, 207, 255, 0.3);
+  --glow-primary-strong: 0 0 40px rgba(0, 207, 255, 0.5);
+  --glow-mint: 0 0 20px rgba(106, 255, 179, 0.3);
+  --glow-salad: 0 0 20px rgba(0, 248, 122, 0.3);
+
+  --transition-fast: 150ms ease;
+  --transition-base: 300ms ease;
+  --transition-slow: 500ms ease;
 }
 
 html {
@@ -17,9 +105,12 @@ html {
 }
 
 body {
-  @apply bg-black text-white;
-  font-family: 'Inter', sans-serif;
-  background-image: url("https://source.unsplash.com/1600x900/?galaxy,stars,space");
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  line-height: 1.5;
+  color: var(--grey);
+  background: var(--bg-primary);
+  background-image: url("https://source.unsplash.com/1600x900/?space,stars,nebula");
   background-size: cover;
   background-attachment: fixed;
 }
@@ -53,23 +144,33 @@ a, button {
   overflow: hidden;
 }
 
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: var(--font-bold);
+  line-height: 1.2;
+  color: var(--cristal);
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
 /* Glow effects */
 .glow-text {
-  text-shadow: 0 0 10px rgba(34, 211, 238, 0.5);
+  text-shadow: var(--glow-primary);
 }
 
 .glow-button {
-  @apply bg-cyan-500 text-white font-bold py-3 px-6 rounded-full transition-all duration-300;
-  box-shadow: 0 0 20px rgba(34, 211, 238, 0.3);
+  background: var(--primary);
+  color: var(--cristal);
+  font-weight: var(--font-bold);
+  padding: 12px 24px;
+  border-radius: var(--radius-full);
+  transition: all var(--transition-base);
+  box-shadow: var(--glow-primary);
 }
 
 .glow-button:hover {
-  box-shadow: 0 0 30px rgba(34, 211, 238, 0.5);
-}
-
-/* Add a soft glow effect to text */
-h1, h2, h3 {
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+  background: var(--hover-primary);
+  box-shadow: var(--glow-primary-strong);
+  transform: translateY(-2px);
 }
 
 /* Custom scrollbar for terminal */
@@ -78,23 +179,23 @@ h1, h2, h3 {
 }
 
 .scrollbar-thin::-webkit-scrollbar-track {
-  background: #111827;
-  border-radius: 4px;
+  background: var(--bg-secondary);
+  border-radius: var(--radius-sm);
 }
 
 .scrollbar-thin::-webkit-scrollbar-thumb {
-  background: #06b6d4;
-  border-radius: 4px;
+  background: var(--primary);
+  border-radius: var(--radius-sm);
 }
 
 .scrollbar-thin::-webkit-scrollbar-thumb:hover {
-  background: #0891b2;
+  background: var(--hover-primary);
 }
 
 /* Firefox scrollbar */
 .scrollbar-thin {
   scrollbar-width: thin;
-  scrollbar-color: #06b6d4 #111827;
+  scrollbar-color: var(--primary) var(--bg-secondary);
 }
 
 /* Animated gradient border for project cards */
@@ -110,4 +211,73 @@ h1, h2, h3 {
 .animate-gradient-xy {
   background-size: 400% 400%;
   animation: gradient-xy 3s ease infinite;
+}
+
+/* Utility Classes */
+.hover-lift {
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.hover-glow {
+  transition: box-shadow var(--transition-base);
+}
+
+.hover-glow:hover {
+  box-shadow: var(--glow-primary-strong);
+}
+
+/* Focus States */
+:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: 2px;
+}
+
+:focus {
+  outline: none;
+}
+
+button:focus-visible {
+  box-shadow: 0 0 0 4px rgba(0, 207, 255, 0.3);
+}
+
+/* Additional Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    box-shadow: var(--glow-primary);
+  }
+  50% {
+    box-shadow: var(--glow-primary-strong);
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

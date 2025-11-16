@@ -224,7 +224,7 @@ const CommandPalette = memo(() => {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: -20 }}
             transition={{ duration: 0.2 }}
-            className="fixed top-20 left-1/2 -translate-x-1/2 w-full max-w-2xl bg-gray-900 rounded-xl border border-cyan-500/30 shadow-2xl z-50 overflow-hidden"
+            className="fixed top-20 left-1/2 -translate-x-1/2 w-full max-w-2xl bg-gray-900 rounded-xl border border-[var(--primary)]/30 shadow-2xl z-50 overflow-hidden"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Search Input */}
@@ -256,7 +256,7 @@ const CommandPalette = memo(() => {
                       onClick={() => handleCommandClick(command)}
                       className={`w-full flex items-center gap-4 p-3 rounded-lg transition-colors text-left ${
                         index === selectedIndex
-                          ? 'bg-cyan-500/20 border border-cyan-500/50'
+                          ? 'bg-[var(--primary)]/20 border border-[var(--primary)]/50'
                           : 'hover:bg-gray-800 border border-transparent'
                       }`}
                       whileHover={{ scale: 1.01 }}
@@ -264,7 +264,7 @@ const CommandPalette = memo(() => {
                     >
                       <div
                         className={`text-2xl ${
-                          index === selectedIndex ? 'text-cyan-400' : 'text-gray-400'
+                          index === selectedIndex ? 'text-[var(--primary)]' : 'text-gray-400'
                         }`}
                       >
                         {command.icon}
@@ -272,7 +272,7 @@ const CommandPalette = memo(() => {
                       <div className="flex-1">
                         <div
                           className={`font-semibold ${
-                            index === selectedIndex ? 'text-cyan-400' : 'text-white'
+                            index === selectedIndex ? 'text-[var(--primary)]' : 'text-white'
                           }`}
                         >
                           {command.title}

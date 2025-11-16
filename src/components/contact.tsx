@@ -28,7 +28,7 @@ const Contact: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-4xl font-bold text-cyan-400"
+          className="text-4xl font-bold text-[var(--primary)]"
         >
           Contact Me
         </motion.h2>
@@ -52,7 +52,7 @@ const Contact: React.FC = () => {
             placeholder="Your Name"
             value={formData.name}
             onChange={handleChange}
-            className="w-full p-3 rounded-lg bg-gray-800 border border-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-400"
+            className="w-full p-3 rounded-lg bg-gray-800 border border-[var(--primary)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
             required
           />
 
@@ -62,7 +62,7 @@ const Contact: React.FC = () => {
             placeholder="Your Email"
             value={formData.email}
             onChange={handleChange}
-            className="w-full p-3 rounded-lg bg-gray-800 border border-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-400"
+            className="w-full p-3 rounded-lg bg-gray-800 border border-[var(--primary)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
             required
           />
 
@@ -72,7 +72,7 @@ const Contact: React.FC = () => {
             placeholder="Your Message"
             value={formData.message}
             onChange={handleChange}
-            className="w-full p-3 rounded-lg bg-gray-800 border border-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-400"
+            className="w-full p-3 rounded-lg bg-gray-800 border border-[var(--primary)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
             required
           ></textarea>
 
@@ -80,7 +80,7 @@ const Contact: React.FC = () => {
             type="submit"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
-            className="w-full bg-cyan-500 hover:bg-cyan-400 text-white py-3 px-6 rounded-lg font-semibold shadow-md transition"
+            className="w-full bg-[var(--primary)] hover:bg-[var(--hover-primary)] text-white py-3 px-6 rounded-lg font-semibold shadow-md transition"
           >
             Send Message
           </motion.button>
@@ -88,10 +88,10 @@ const Contact: React.FC = () => {
 
         {/* Social Links */}
         <div className="mt-6 flex justify-center space-x-4">
-          <a href="https://github.com/Maxwell-Fernandes/Maxwell-Fernandes" target="_blank" rel="noopener noreferrer" className="text-cyan-400 hover:text-white transition">
+          <a href="https://github.com/Maxwell-Fernandes/Maxwell-Fernandes" target="_blank" rel="noopener noreferrer" className="text-[var(--primary)] hover:text-white transition">
             GitHub
           </a>
-          <a href="https://www.linkedin.com/in/maxwell-fernandes-a37007270/" target="_blank" rel="noopener noreferrer" className="text-cyan-400 hover:text-white transition">
+          <a href="https://www.linkedin.com/in/maxwell-fernandes-a37007270/" target="_blank" rel="noopener noreferrer" className="text-[var(--primary)] hover:text-white transition">
             LinkedIn
           </a>
         </div>
