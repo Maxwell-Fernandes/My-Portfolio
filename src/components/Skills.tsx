@@ -64,13 +64,13 @@ const Skills: React.FC = memo(() => {
               viewport={{ once: true }}
               className="relative group"
             >
-              <div className="flex flex-col items-center justify-center p-4 rounded-lg border border-gray-800 bg-gray-900/50 backdrop-blur-sm hover:border-[var(--primary)]/50 transition-all duration-300">
+              <div className="flex flex-col items-center justify-center p-4 rounded-lg border border-[var(--light-grey)] bg-[var(--bg-secondary)]/50 backdrop-blur-sm hover:border-[var(--primary)]/50 transition-all duration-300">
                 <img
                   src={skill.icon}
                   alt={skill.name}
                   className="w-12 h-12 mb-2"
                 />
-                <span className="text-gray-300 text-sm">{skill.name}</span>
+                <span className="text-[var(--light-grey)] text-sm">{skill.name}</span>
                 
                 {/* Hover tooltip */}
                 <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 px-3 py-1 bg-[var(--primary)] text-white text-sm rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">

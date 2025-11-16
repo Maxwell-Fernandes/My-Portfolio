@@ -123,11 +123,11 @@ const ProjectCard: React.FC<ProjectCardProps> = memo(({ project, index }) => {
       <div className="absolute -inset-0.5 bg-[var(--primary)] rounded-xl opacity-0 group-hover:opacity-20 blur transition-opacity duration-500" />
 
       {/* Card */}
-      <div className="relative bg-gray-900 rounded-xl overflow-hidden border border-gray-800 hover:border-[var(--primary)] transition-all duration-300 shadow-lg">
+      <div className="relative bg-[var(--bg-secondary)] rounded-xl overflow-hidden border border-[var(--light-grey)] hover:border-[var(--primary)] transition-all duration-300 shadow-lg">
         {/* Project Image with parallax */}
         <div className="relative h-64 md:h-80 overflow-hidden">
           {/* Overlay gradient */}
-          <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/50 to-transparent z-10" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-secondary)] via-[var(--bg-secondary)]/50 to-transparent z-10" />
 
           {/* Featured badge */}
           {project.featured && (
@@ -179,7 +179,7 @@ const ProjectCard: React.FC<ProjectCardProps> = memo(({ project, index }) => {
           </div>
 
           {/* Description */}
-          <p className="text-gray-300 mb-6 leading-relaxed">
+          <p className="text-[var(--light-grey)] mb-6 leading-relaxed">
             {project.description}
           </p>
 
@@ -198,7 +198,7 @@ const ProjectCard: React.FC<ProjectCardProps> = memo(({ project, index }) => {
               </motion.span>
             ))}
             {project.tags.length > 4 && (
-              <span className="px-3 py-1 bg-gray-800 text-gray-400 rounded-full text-sm">
+              <span className="px-3 py-1 bg-[var(--bg-tertiary)] text-[var(--grey)] rounded-full text-sm">
                 +{project.tags.length - 4} more
               </span>
             )}
@@ -212,7 +212,7 @@ const ProjectCard: React.FC<ProjectCardProps> = memo(({ project, index }) => {
               rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="flex items-center gap-2 px-5 py-2.5 bg-gray-800 hover:bg-[var(--primary)] text-white rounded-lg font-medium shadow-md hover:shadow-lg transition-all duration-300 border border-gray-700 hover:border-[var(--primary)]"
+              className="flex items-center gap-2 px-5 py-2.5 bg-[var(--bg-tertiary)] hover:bg-[var(--primary)] text-white rounded-lg font-medium shadow-md hover:shadow-lg transition-all duration-300 border border-[var(--dark-grey)] hover:border-[var(--primary)]"
             >
               <FiGithub className="text-lg" />
               <span>View Code</span>
@@ -255,7 +255,7 @@ const Projects: React.FC = memo(() => {
           <h2 className="text-4xl font-bold text-[var(--primary)] mb-4">
             Featured Projects
           </h2>
-          <p className="text-gray-300 text-lg">
+          <p className="text-[var(--light-grey)] text-lg">
             A showcase of my best work in software development
           </p>
         </motion.div>

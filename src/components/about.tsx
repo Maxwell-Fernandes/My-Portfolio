@@ -28,11 +28,11 @@ const About: React.FC = memo(() => {
             transition={{ duration: 0.8 }}
             className="space-y-6"
           >
-            <h3 className="text-2xl font-semibold text-cyan-300">
+            <h3 className="text-2xl font-semibold text-[var(--primary)]">
               Computer Engineering Student & Software Developer
             </h3>
             
-            <p className="text-gray-300 leading-relaxed">
+            <p className="text-[var(--light-grey)] leading-relaxed">
             I am a passionate Computer Engineering student with a strong focus on developing efficient software solutions.
              My expertise lies in web and mobile development, where I utilize languages such as Java, Python, and JavaScript to create scalable applications that address complex challenges. Proficient in ReactJS for building dynamic user interfaces and Flutter with Dart for crafting cross-platform mobile applications, I am dedicated to delivering high-quality code and innovative solutions that enhance user experiences.
             </p>
@@ -40,19 +40,19 @@ const About: React.FC = memo(() => {
             <div className="grid grid-cols-2 gap-4 my-6">
               <div>
                 <h4 className="text-[var(--primary)] font-semibold">Location</h4>
-                <p className="text-gray-300">Goa, India</p>
+                <p className="text-[var(--light-grey)]">Goa, India</p>
               </div>
               <div>
                 <h4 className="text-[var(--primary)] font-semibold">LinkedIn</h4>
-                <p className="text-gray-300">maxwell-fernandes-a37007270</p>
+                <p className="text-[var(--light-grey)]">maxwell-fernandes-a37007270</p>
               </div>
               <div>
                 <h4 className="text-[var(--primary)] font-semibold">Tech Stack</h4>
-                <p className="text-gray-300">React, Java, Python, JavaScript</p>
+                <p className="text-[var(--light-grey)]">React, Java, Python, JavaScript</p>
               </div>
               <div>
                 <h4 className="text-[var(--primary)] font-semibold">Interests</h4>
-                <p className="text-gray-300">System Design, Machine Learning</p>
+                <p className="text-[var(--light-grey)]">System Design, Machine Learning</p>
               </div>
             </div>
 
@@ -60,9 +60,9 @@ const About: React.FC = memo(() => {
               onClick={handleContactClick}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-[var(--primary)] text-white px-8 py-3 rounded-full font-semibold 
-                         hover:bg-cyan-600 transition-all duration-300 shadow-lg 
-                         hover:shadow-cyan-500/50"
+              className="bg-[var(--primary)] text-white px-8 py-3 rounded-full font-semibold
+                         hover:bg-[var(--hover-primary)] transition-all duration-300 shadow-lg
+                         hover:shadow-[var(--primary)]/50"
             >
               Contact Me
             </motion.button>
@@ -82,7 +82,7 @@ const About: React.FC = memo(() => {
               <div className="absolute inset-0 bg-[var(--primary)]/20 rounded-lg transform -rotate-6"></div>
               
               {/* Avatar container */}
-              <div className="relative bg-gradient-to-b from-cyan-500/20 to-transparent 
+              <div className="relative bg-gradient-to-b from-[var(--primary)]/20 to-transparent
                             rounded-lg overflow-hidden w-full h-full flex items-center justify-center">
                 <img
                   src="/images/profile.jpg" // Replace with your avatar/photo path

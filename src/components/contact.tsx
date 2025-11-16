@@ -33,14 +33,14 @@ const Contact: React.FC = () => {
           Contact Me
         </motion.h2>
 
-        <p className="text-gray-300 mt-4">
+        <p className="text-[var(--light-grey)] mt-4">
           Feel free to reach out! Fill in the form below.
         </p>
 
         {/* Form */}
         <motion.form
           onSubmit={handleSubmit}
-          className="mt-6 space-y-4 max-w-md mx-auto bg-gray-900 p-6 rounded-lg shadow-lg"
+          className="mt-6 space-y-4 max-w-md mx-auto bg-[var(--bg-secondary)] p-6 rounded-lg shadow-lg"
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
@@ -52,7 +52,7 @@ const Contact: React.FC = () => {
             placeholder="Your Name"
             value={formData.name}
             onChange={handleChange}
-            className="w-full p-3 rounded-lg bg-gray-800 border border-[var(--primary)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
+            className="w-full p-3 rounded-lg bg-[var(--bg-tertiary)] border border-[var(--primary)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
             required
           />
 
@@ -62,7 +62,7 @@ const Contact: React.FC = () => {
             placeholder="Your Email"
             value={formData.email}
             onChange={handleChange}
-            className="w-full p-3 rounded-lg bg-gray-800 border border-[var(--primary)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
+            className="w-full p-3 rounded-lg bg-[var(--bg-tertiary)] border border-[var(--primary)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
             required
           />
 
@@ -72,7 +72,7 @@ const Contact: React.FC = () => {
             placeholder="Your Message"
             value={formData.message}
             onChange={handleChange}
-            className="w-full p-3 rounded-lg bg-gray-800 border border-[var(--primary)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
+            className="w-full p-3 rounded-lg bg-[var(--bg-tertiary)] border border-[var(--primary)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
             required
           ></textarea>
 

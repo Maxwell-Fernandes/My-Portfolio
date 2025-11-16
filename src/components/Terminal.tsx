@@ -43,7 +43,7 @@ const Terminal: React.FC = memo(() => {
       <div className="space-y-2">
         <div className="text-[var(--primary)] font-bold">About Maxwell Fernandes</div>
         <div>Computer Engineering Student & Software Developer</div>
-        <div className="text-gray-300">
+        <div className="text-[var(--light-grey)]">
           Passionate about developing efficient software solutions.
           Expertise in web and mobile development using Java, Python, JavaScript, React, and Flutter.
         </div>
@@ -75,19 +75,19 @@ const Terminal: React.FC = memo(() => {
         <div className="space-y-3">
           <div>
             <div className="text-green-400">1. Quickart</div>
-            <div className="text-sm text-gray-300">Grocery delivery app - Flutter, Firebase</div>
+            <div className="text-sm text-[var(--light-grey)]">Grocery delivery app - Flutter, Firebase</div>
           </div>
           <div>
             <div className="text-green-400">2. Download Accelerator</div>
-            <div className="text-sm text-gray-300">Multi-threaded file downloader - Java</div>
+            <div className="text-sm text-[var(--light-grey)]">Multi-threaded file downloader - Java</div>
           </div>
           <div>
             <div className="text-green-400">3. Toralizer</div>
-            <div className="text-sm text-gray-300">Proxy server - C, Linux</div>
+            <div className="text-sm text-[var(--light-grey)]">Proxy server - C, Linux</div>
           </div>
           <div>
             <div className="text-green-400">4. Road Pothole Detection</div>
-            <div className="text-sm text-gray-300">Computer vision system - Python, OpenCV</div>
+            <div className="text-sm text-[var(--light-grey)]">Computer vision system - Python, OpenCV</div>
           </div>
         </div>
         <div className="mt-2 text-sm">
@@ -111,7 +111,7 @@ const Terminal: React.FC = memo(() => {
         <div className="text-[var(--primary)] font-bold">Education:</div>
         <div>
           <div className="text-green-400">Computer Engineering</div>
-          <div className="text-sm text-gray-300">Currently pursuing degree with focus on software development</div>
+          <div className="text-sm text-[var(--light-grey)]">Currently pursuing degree with focus on software development</div>
         </div>
       </div>
     ),
@@ -230,7 +230,7 @@ Type 'help' to see available commands.
       } else if (matches.length > 1) {
         setHistory(prev => [...prev, {
           command: input,
-          output: <div className="text-gray-400">{matches.join('  ')}</div>,
+          output: <div className="text-[var(--grey)]">{matches.join('  ')}</div>,
           timestamp: new Date()
         }]);
       }
@@ -273,7 +273,7 @@ Type 'help' to see available commands.
         <motion.button
           onClick={() => setIsOpen(!isOpen)}
           data-terminal-toggle="true"
-          className="relative bg-gradient-to-br from-cyan-500 to-cyan-600 text-white p-4 rounded-full shadow-2xl hover:from-cyan-600 hover:to-cyan-700 transition-all duration-300 border-2 border-[var(--primary)]/50"
+          className="relative bg-gradient-to-br from-[var(--primary)] to-[var(--hover-primary)] text-white p-4 rounded-full shadow-2xl hover:from-[var(--hover-primary)] hover:to-[var(--active-primary)] transition-all duration-300 border-2 border-[var(--primary)]/50"
           whileHover={{
             scale: 1.15,
             boxShadow: "0 0 40px rgba(34, 211, 238, 0.6)",
@@ -333,20 +333,20 @@ Type 'help' to see available commands.
             transition={{ type: 'spring', damping: 25, stiffness: 300 }}
             className="fixed bottom-24 right-8 w-full max-w-3xl z-50"
           >
-            <div className="bg-gray-900 rounded-lg shadow-2xl border border-[var(--primary)]/30 overflow-hidden">
+            <div className="bg-[var(--bg-secondary)] rounded-lg shadow-2xl border border-[var(--primary)]/30 overflow-hidden">
               {/* Terminal Header */}
-              <div className="bg-gray-800 px-4 py-2 flex items-center justify-between border-b border-gray-700">
+              <div className="bg-[var(--bg-tertiary)] px-4 py-2 flex items-center justify-between border-b border-[var(--dark-grey)]">
                 <div className="flex items-center gap-2">
                   <div className="flex gap-2">
                     <div className="w-3 h-3 rounded-full bg-red-500"></div>
                     <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
                     <div className="w-3 h-3 rounded-full bg-green-500"></div>
                   </div>
-                  <span className="text-gray-400 text-sm ml-2">maxwell@portfolio:~$</span>
+                  <span className="text-[var(--grey)] text-sm ml-2">maxwell@portfolio:~$</span>
                 </div>
                 <button
                   onClick={() => setIsOpen(false)}
-                  className="text-gray-400 hover:text-white transition-colors"
+                  className="text-[var(--grey)] hover:text-white transition-colors"
                 >
                   ✕
                 </button>
@@ -355,7 +355,7 @@ Type 'help' to see available commands.
               {/* Terminal Content */}
               <div
                 ref={terminalRef}
-                className="bg-black/90 p-4 h-96 overflow-y-auto font-mono text-sm scrollbar-thin scrollbar-thumb-cyan-500 scrollbar-track-gray-900"
+                className="bg-black/90 p-4 h-96 overflow-y-auto font-mono text-sm scrollbar-thin scrollbar-thumb-[var(--primary)] scrollbar-track-[var(--bg-secondary)]"
                 onClick={() => inputRef.current?.focus()}
               >
                 {/* Welcome Message */}
@@ -401,7 +401,7 @@ Type 'help' to see available commands.
               </div>
 
               {/* Terminal Footer */}
-              <div className="bg-gray-800 px-4 py-1 text-xs text-gray-400 flex justify-between border-t border-gray-700">
+              <div className="bg-[var(--bg-tertiary)] px-4 py-1 text-xs text-[var(--grey)] flex justify-between border-t border-[var(--dark-grey)]">
                 <span>Type 'help' for commands</span>
                 <span>↑↓ for history | Tab for autocomplete</span>
               </div>
