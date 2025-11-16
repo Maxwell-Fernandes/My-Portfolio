@@ -32,9 +32,9 @@ const Navbar: React.FC = () => {
     >
       <div className="max-w-6xl mx-auto flex justify-between items-center p-4">
         <a href="#" className="text-2xl font-bold font-mono">
-          <span className="text-cyan-400">M</span>
+          <span className="text-[var(--primary)]">M</span>
           <span className="text-white">axwell </span>
-          <span className="text-cyan-400">F</span>
+          <span className="text-[var(--primary)]">F</span>
           <span className="text-white">ernandes</span>
         </a>
 
@@ -58,8 +58,8 @@ const Navbar: React.FC = () => {
             >
               <motion.a
                 href={`#${section}`}
-                className={`hover:text-cyan-400 transition-colors ${
-                  activeSection === section ? "text-cyan-400" : ""
+                className={`hover:text-[var(--primary)] transition-colors ${
+                  activeSection === section ? "text-[var(--primary)]" : ""
                 }`}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
@@ -89,8 +89,8 @@ const Navbar: React.FC = () => {
                 >
                   <motion.a
                     href={`#${section}`}
-                    className={`text-lg hover:text-cyan-400 transition-colors ${
-                      activeSection === section ? "text-cyan-400" : ""
+                    className={`text-lg hover:text-[var(--primary)] transition-colors ${
+                      activeSection === section ? "text-[var(--primary)]" : ""
                     }`}
                     onClick={() => setIsOpen(false)}
                     whileHover={{ scale: 1.1 }}

@@ -21,7 +21,7 @@ const Terminal: React.FC = memo(() => {
   const commands: Record<string, () => string | React.ReactNode> = {
     help: () => (
       <div className="space-y-2">
-        <div className="text-cyan-400 font-bold">Available Commands:</div>
+        <div className="text-[var(--primary)] font-bold">Available Commands:</div>
         <div className="grid grid-cols-2 gap-2 text-sm">
           <div><span className="text-green-400">help</span> - Show available commands</div>
           <div><span className="text-green-400">about</span> - About Maxwell</div>
@@ -41,9 +41,9 @@ const Terminal: React.FC = memo(() => {
 
     about: () => (
       <div className="space-y-2">
-        <div className="text-cyan-400 font-bold">About Maxwell Fernandes</div>
+        <div className="text-[var(--primary)] font-bold">About Maxwell Fernandes</div>
         <div>Computer Engineering Student & Software Developer</div>
-        <div className="text-gray-300">
+        <div className="text-[var(--light-grey)]">
           Passionate about developing efficient software solutions.
           Expertise in web and mobile development using Java, Python, JavaScript, React, and Flutter.
         </div>
@@ -58,7 +58,7 @@ const Terminal: React.FC = memo(() => {
 
     skills: () => (
       <div className="space-y-2">
-        <div className="text-cyan-400 font-bold">Technical Skills:</div>
+        <div className="text-[var(--primary)] font-bold">Technical Skills:</div>
         <div className="space-y-1">
           <div><span className="text-yellow-400">Languages:</span> Java, Python, C++, C, Dart, JavaScript, TypeScript</div>
           <div><span className="text-yellow-400">Frontend:</span> React.js, HTML5, CSS3, Tailwind, Bootstrap, Redux</div>
@@ -71,23 +71,23 @@ const Terminal: React.FC = memo(() => {
 
     projects: () => (
       <div className="space-y-2">
-        <div className="text-cyan-400 font-bold">Featured Projects:</div>
+        <div className="text-[var(--primary)] font-bold">Featured Projects:</div>
         <div className="space-y-3">
           <div>
             <div className="text-green-400">1. Quickart</div>
-            <div className="text-sm text-gray-300">Grocery delivery app - Flutter, Firebase</div>
+            <div className="text-sm text-[var(--light-grey)]">Grocery delivery app - Flutter, Firebase</div>
           </div>
           <div>
             <div className="text-green-400">2. Download Accelerator</div>
-            <div className="text-sm text-gray-300">Multi-threaded file downloader - Java</div>
+            <div className="text-sm text-[var(--light-grey)]">Multi-threaded file downloader - Java</div>
           </div>
           <div>
             <div className="text-green-400">3. Toralizer</div>
-            <div className="text-sm text-gray-300">Proxy server - C, Linux</div>
+            <div className="text-sm text-[var(--light-grey)]">Proxy server - C, Linux</div>
           </div>
           <div>
             <div className="text-green-400">4. Road Pothole Detection</div>
-            <div className="text-sm text-gray-300">Computer vision system - Python, OpenCV</div>
+            <div className="text-sm text-[var(--light-grey)]">Computer vision system - Python, OpenCV</div>
           </div>
         </div>
         <div className="mt-2 text-sm">
@@ -98,7 +98,7 @@ const Terminal: React.FC = memo(() => {
 
     contact: () => (
       <div className="space-y-2">
-        <div className="text-cyan-400 font-bold">Contact Information:</div>
+        <div className="text-[var(--primary)] font-bold">Contact Information:</div>
         <div><span className="text-green-400">Email:</span> fernandesmax082@gmail.com</div>
         <div><span className="text-green-400">GitHub:</span> github.com/Maxwell-Fernandes</div>
         <div><span className="text-green-400">LinkedIn:</span> linkedin.com/in/maxwell-fernandes-a37007270</div>
@@ -108,16 +108,16 @@ const Terminal: React.FC = memo(() => {
 
     education: () => (
       <div className="space-y-2">
-        <div className="text-cyan-400 font-bold">Education:</div>
+        <div className="text-[var(--primary)] font-bold">Education:</div>
         <div>
           <div className="text-green-400">Computer Engineering</div>
-          <div className="text-sm text-gray-300">Currently pursuing degree with focus on software development</div>
+          <div className="text-sm text-[var(--light-grey)]">Currently pursuing degree with focus on software development</div>
         </div>
       </div>
     ),
 
     banner: () => (
-      <pre className="text-cyan-400 text-xs leading-tight">
+      <pre className="text-[var(--primary)] text-xs leading-tight">
 {`
  __  __                          _ _
 |  \\/  | __ ___  ____      _____| | |
@@ -230,7 +230,7 @@ Type 'help' to see available commands.
       } else if (matches.length > 1) {
         setHistory(prev => [...prev, {
           command: input,
-          output: <div className="text-gray-400">{matches.join('  ')}</div>,
+          output: <div className="text-[var(--grey)]">{matches.join('  ')}</div>,
           timestamp: new Date()
         }]);
       }
@@ -257,7 +257,7 @@ Type 'help' to see available commands.
       >
         {/* Pulsing glow ring */}
         <motion.div
-          className="absolute inset-0 rounded-full bg-cyan-500/30 blur-xl"
+          className="absolute inset-0 rounded-full bg-[var(--primary)]/30 blur-xl"
           animate={{
             scale: [1, 1.3, 1],
             opacity: [0.5, 0.8, 0.5],
@@ -273,7 +273,7 @@ Type 'help' to see available commands.
         <motion.button
           onClick={() => setIsOpen(!isOpen)}
           data-terminal-toggle="true"
-          className="relative bg-gradient-to-br from-cyan-500 to-cyan-600 text-white p-4 rounded-full shadow-2xl hover:from-cyan-600 hover:to-cyan-700 transition-all duration-300 border-2 border-cyan-400/50"
+          className="relative bg-gradient-to-br from-[var(--primary)] to-[var(--hover-primary)] text-white p-4 rounded-full shadow-2xl hover:from-[var(--hover-primary)] hover:to-[var(--active-primary)] transition-all [var(--transition-base)] border-2 border-[var(--primary)]/50"
           whileHover={{
             scale: 1.15,
             boxShadow: "0 0 40px rgba(34, 211, 238, 0.6)",
@@ -312,13 +312,13 @@ Type 'help' to see available commands.
         {/* Tooltip hint */}
         {!isOpen && (
           <motion.div
-            className="absolute bottom-full right-0 mb-2 px-3 py-1 bg-cyan-500 text-white text-sm rounded-lg whitespace-nowrap pointer-events-none"
+            className="absolute bottom-full right-0 mb-2 px-3 py-1 bg-[var(--primary)] text-white text-sm rounded-lg whitespace-nowrap pointer-events-none"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 3.5 }}
           >
             Try the terminal! 💻
-            <div className="absolute -bottom-1 right-4 w-2 h-2 bg-cyan-500 rotate-45"></div>
+            <div className="absolute -bottom-1 right-4 w-2 h-2 bg-[var(--primary)] rotate-45"></div>
           </motion.div>
         )}
       </motion.div>
@@ -333,20 +333,20 @@ Type 'help' to see available commands.
             transition={{ type: 'spring', damping: 25, stiffness: 300 }}
             className="fixed bottom-24 right-8 w-full max-w-3xl z-50"
           >
-            <div className="bg-gray-900 rounded-lg shadow-2xl border border-cyan-500/30 overflow-hidden">
+            <div className="bg-[var(--bg-secondary)] rounded-lg shadow-2xl border border-[var(--primary)]/30 overflow-hidden">
               {/* Terminal Header */}
-              <div className="bg-gray-800 px-4 py-2 flex items-center justify-between border-b border-gray-700">
+              <div className="bg-[var(--bg-tertiary)] px-4 py-2 flex items-center justify-between border-b border-[var(--dark-grey)]">
                 <div className="flex items-center gap-2">
                   <div className="flex gap-2">
                     <div className="w-3 h-3 rounded-full bg-red-500"></div>
                     <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
                     <div className="w-3 h-3 rounded-full bg-green-500"></div>
                   </div>
-                  <span className="text-gray-400 text-sm ml-2">maxwell@portfolio:~$</span>
+                  <span className="text-[var(--grey)] text-sm ml-2">maxwell@portfolio:~$</span>
                 </div>
                 <button
                   onClick={() => setIsOpen(false)}
-                  className="text-gray-400 hover:text-white transition-colors"
+                  className="text-[var(--grey)] hover:text-white transition-colors"
                 >
                   ✕
                 </button>
@@ -355,7 +355,7 @@ Type 'help' to see available commands.
               {/* Terminal Content */}
               <div
                 ref={terminalRef}
-                className="bg-black/90 p-4 h-96 overflow-y-auto font-mono text-sm scrollbar-thin scrollbar-thumb-cyan-500 scrollbar-track-gray-900"
+                className="bg-black/90 p-4 h-96 overflow-y-auto font-mono text-sm scrollbar-thin scrollbar-thumb-[var(--primary)] scrollbar-track-[var(--bg-secondary)]"
                 onClick={() => inputRef.current?.focus()}
               >
                 {/* Welcome Message */}
@@ -373,7 +373,7 @@ Type 'help' to see available commands.
                     className="mb-3"
                   >
                     <div className="flex items-center gap-2 text-green-400">
-                      <span className="text-cyan-400">➜</span>
+                      <span className="text-[var(--primary)]">➜</span>
                       <span className="text-purple-400">~</span>
                       <span className="text-white">{item.command}</span>
                     </div>
@@ -385,7 +385,7 @@ Type 'help' to see available commands.
 
                 {/* Input Line */}
                 <form onSubmit={handleSubmit} className="flex items-center gap-2">
-                  <span className="text-cyan-400">➜</span>
+                  <span className="text-[var(--primary)]">➜</span>
                   <span className="text-purple-400">~</span>
                   <input
                     ref={inputRef}
@@ -401,7 +401,7 @@ Type 'help' to see available commands.
               </div>
 
               {/* Terminal Footer */}
-              <div className="bg-gray-800 px-4 py-1 text-xs text-gray-400 flex justify-between border-t border-gray-700">
+              <div className="bg-[var(--bg-tertiary)] px-4 py-1 text-xs text-[var(--grey)] flex justify-between border-t border-[var(--dark-grey)]">
                 <span>Type 'help' for commands</span>
                 <span>↑↓ for history | Tab for autocomplete</span>
               </div>

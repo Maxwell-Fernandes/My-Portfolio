@@ -1,0 +1,336 @@
+/**
+ * Design Tokens - CSS Custom Properties
+ * Portfolio Style Guide Implementation
+ *
+ * Usage: Import this file or copy these variables to your main CSS
+ */
+
+:root {
+  /* ==================== COLOR SYSTEM ==================== */
+
+  /* Primary Colors */
+  --primary: #00cfff;
+  --primary-light: #6affb3;
+  --primary-dark: #0068ff;
+  --salad: #00f87a;
+
+  /* Neutral Colors */
+  --dark: #051323;
+  --black: #000000;
+  --dark-grey: #56667a;
+  --grey: #83909e;
+  --light-grey: #9ca4ae;
+  --cristal: #ffffff;
+
+  /* Semantic Colors */
+  --success: #00f87a;
+  --warning: #ffa500;
+  --error: #ff4444;
+  --info: #00cfff;
+
+  /* Background Layers */
+  --bg-primary: #051323;
+  --bg-secondary: #0a1e3a;
+  --bg-tertiary: #112d4e;
+  --bg-overlay: rgba(5, 19, 35, 0.95);
+
+  /* Interactive States */
+  --hover-primary: #00e0ff;
+  --hover-secondary: #79f4ff;
+  --active-primary: #00b8e6;
+  --disabled: #56667a;
+
+  /* Electric/Accent Colors */
+  --electric: #79a5ee24;
+  --electric-blue: #0068ff17;
+  --electro: #0068ff;
+  --mint: #6affb3;
+
+  /* Legacy/Compatibility */
+  --color: #00cfff;
+  --blue: var(--color);
+
+
+  /* ==================== TYPOGRAPHY ==================== */
+
+  /* Font Families */
+  --font-primary: 'Gilroy', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+  --font-family: var(--font-primary);
+
+  /* Font Sizes */
+  --text-xs: 12px;
+  --text-sm: 14px;
+  --text-base: 16px;
+  --text-lg: 18px;
+  --text-xl: 20px;
+  --text-2xl: 24px;
+  --text-3xl: 32px;
+  --text-4xl: 40px;
+  --text-5xl: 48px;
+  --text-6xl: 64px;
+  --h3: 18px; /* Legacy */
+
+  /* Font Weights */
+  --font-light: 300;
+  --font-regular: 400;
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
+  --font-extrabold: 800;
+
+  /* Line Heights */
+  --leading-tight: 1.2;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.75;
+
+  /* Letter Spacing */
+  --tracking-tight: -0.02em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.05em;
+
+
+  /* ==================== SPACING & LAYOUT ==================== */
+
+  /* Spacing Scale */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+  --space-32: 128px;
+
+  /* Border Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+  --corner: 16px; /* Legacy - use --radius-lg */
+
+  /* Container Widths */
+  --container-sm: 640px;
+  --container-md: 768px;
+  --container-lg: 1024px;
+  --container-xl: 1280px;
+  --container-2xl: 1536px;
+
+  /* Z-Index Layers */
+  --z-background: -1;
+  --z-base: 0;
+  --z-dropdown: 10;
+  --z-sticky: 20;
+  --z-fixed: 30;
+  --z-modal-backdrop: 40;
+  --z-modal: 50;
+  --z-popover: 60;
+  --z-tooltip: 70;
+
+
+  /* ==================== EFFECTS ==================== */
+
+  /* Shadows */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.15);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.2);
+  --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.3);
+
+  /* Glow Effects */
+  --glow-primary: 0 0 20px rgba(0, 207, 255, 0.3);
+  --glow-primary-strong: 0 0 40px rgba(0, 207, 255, 0.5);
+  --glow-mint: 0 0 20px rgba(106, 255, 179, 0.3);
+  --glow-salad: 0 0 20px rgba(0, 248, 122, 0.3);
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-base: 300ms ease;
+  --transition-slow: 500ms ease;
+  --transition-spring: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+
+  /* ==================== RESPONSIVE BREAKPOINTS ==================== */
+
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+
+
+  /* ==================== LEGACY SUPPORT ==================== */
+
+  /* Webflow compatibility */
+  --webflow-blue: #fff;
+  --webflow-blue-2: #fff;
+  --webflow-blue-3: #fff;
+  --webflow-blue-4: #fff;
+
+  /* Swiper compatibility */
+  --swiper-theme-color: var(--primary);
+  --swiper-navigation-size: 44px;
+}
+
+
+/* ==================== DARK MODE (Optional) ==================== */
+
+/* If implementing theme toggle, uncomment below */
+/*
+[data-theme="light"] {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f5f7fa;
+  --bg-tertiary: #e8ecf1;
+  --cristal: #051323;
+  --dark: #ffffff;
+  --grey: #56667a;
+  --dark-grey: #9ca4ae;
+}
+*/
+
+
+/* ==================== UTILITY CLASSES ==================== */
+
+/* Screen Reader Only */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Hover Effects */
+.hover-lift {
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.hover-glow {
+  transition: box-shadow var(--transition-base);
+}
+
+.hover-glow:hover {
+  box-shadow: var(--glow-primary-strong);
+}
+
+.hover-scale {
+  transition: transform var(--transition-base) var(--transition-spring);
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+/* Focus States */
+:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: 2px;
+}
+
+:focus {
+  outline: none;
+}
+
+button:focus-visible {
+  box-shadow: 0 0 0 4px rgba(0, 207, 255, 0.3);
+}
+
+
+/* ==================== ANIMATIONS ==================== */
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(0, 207, 255, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(0, 207, 255, 0.6);
+  }
+}
+
+@keyframes gradient-xy {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+
+/* ==================== ACCESSIBILITY ==================== */
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+  :root {
+    --primary: #00e0ff;
+    --grey: #a0a0a0;
+  }
+}

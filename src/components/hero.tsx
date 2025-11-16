@@ -39,7 +39,7 @@ const Hero: React.FC = memo(() => {
       >
         <h1 className="text-5xl font-bold">
           <span className="text-white">Hey! I am </span>
-          <span className="text-cyan-400">
+          <span className="text-[var(--primary)]">
             {text}
             <span className="animate-pulse">|</span>
           </span>
@@ -65,7 +65,7 @@ const Hero: React.FC = memo(() => {
             download="Maxwell_Resume.pdf"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
-            className="inline-flex items-center gap-2 bg-cyan-500 text-white font-bold py-3 px-6 rounded-full shadow-md hover:bg-cyan-400 transition"
+            className="inline-flex items-center gap-2 bg-[var(--primary)] text-white font-bold py-3 px-6 rounded-full shadow-md hover:bg-[var(--hover-primary)] transition"
           >
             <FiDownload />
             Download Resume

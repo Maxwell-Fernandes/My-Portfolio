@@ -10,7 +10,7 @@ const LoadingScreen = memo(() => {
       transition={{ duration: 0.5 }}
     >
       <motion.div
-        className="text-4xl text-cyan-400 font-bold"
+        className="text-4xl text-[var(--primary)] font-bold"
         initial={{ scale: 0.5 }}
         animate={{ scale: [0.5, 1, 0.5] }}
         transition={{ duration: 2, repeat: Infinity }}

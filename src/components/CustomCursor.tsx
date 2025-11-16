@@ -176,7 +176,7 @@ const CustomCursor = () => {
     <>
       <motion.div
         ref={dotRef}
-        className="fixed w-2 h-2 bg-cyan-400 rounded-full pointer-events-none z-50 -translate-x-1/2 -translate-y-1/2 mix-blend-difference transition-transform duration-150"
+        className="fixed w-2 h-2 bg-[var(--primary)] rounded-full pointer-events-none z-50 -translate-x-1/2 -translate-y-1/2 mix-blend-difference transition-transform duration-150"
         style={{
           left: cursorXSpring,
           top: cursorYSpring,
@@ -190,7 +190,7 @@ const CustomCursor = () => {
       />
       <motion.div
         ref={ringRef}
-        className="fixed w-8 h-8 border border-cyan-400 rounded-full pointer-events-none z-50 -translate-x-1/2 -translate-y-1/2 mix-blend-difference transition-all duration-200"
+        className="fixed w-8 h-8 border border-[var(--primary)] rounded-full pointer-events-none z-50 -translate-x-1/2 -translate-y-1/2 mix-blend-difference transition-all duration-200"
         style={{
           left: cursorXSpring,
           top: cursorYSpring,

@@ -31,7 +31,7 @@ const ScrollDownIndicator = memo(() => {
         <span className="text-gray-400 text-sm mb-2">Scroll Down</span>
         <motion.div
           whileHover={{ scale: 1.2 }}
-          className="text-cyan-400 text-3xl"
+          className="text-[var(--primary)] text-3xl"
         >
           <FiChevronDown />
         </motion.div>

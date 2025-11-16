@@ -224,23 +224,23 @@ const CommandPalette = memo(() => {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: -20 }}
             transition={{ duration: 0.2 }}
-            className="fixed top-20 left-1/2 -translate-x-1/2 w-full max-w-2xl bg-gray-900 rounded-xl border border-cyan-500/30 shadow-2xl z-50 overflow-hidden"
+            className="fixed top-20 left-1/2 -translate-x-1/2 w-full max-w-2xl bg-[var(--bg-secondary)] rounded-xl border border-[var(--primary)]/30 shadow-2xl z-50 overflow-hidden"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Search Input */}
-            <div className="flex items-center gap-3 p-4 border-b border-gray-800">
-              <FiSearch className="text-gray-400 text-xl" />
+            <div className="flex items-center gap-3 p-4 border-b border-[var(--light-grey)]">
+              <FiSearch className="text-[var(--grey)] text-xl" />
               <input
                 type="text"
                 placeholder="Type a command or search..."
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 autoFocus
-                className="flex-1 bg-transparent text-white placeholder-gray-500 outline-none text-lg"
+                className="flex-1 bg-transparent text-white placeholder-[var(--grey)] outline-none text-lg"
               />
               <button
                 onClick={() => setIsOpen(false)}
-                className="text-gray-400 hover:text-white transition-colors"
+                className="text-[var(--grey)] hover:text-white transition-colors"
               >
                 <FiX className="text-xl" />
               </button>
@@ -256,15 +256,15 @@ const CommandPalette = memo(() => {
                       onClick={() => handleCommandClick(command)}
                       className={`w-full flex items-center gap-4 p-3 rounded-lg transition-colors text-left ${
                         index === selectedIndex
-                          ? 'bg-cyan-500/20 border border-cyan-500/50'
-                          : 'hover:bg-gray-800 border border-transparent'
+                          ? 'bg-[var(--primary)]/20 border border-[var(--primary)]/50'
+                          : 'hover:bg-[var(--bg-tertiary)] border border-transparent'
                       }`}
                       whileHover={{ scale: 1.01 }}
                       whileTap={{ scale: 0.99 }}
                     >
                       <div
                         className={`text-2xl ${
-                          index === selectedIndex ? 'text-cyan-400' : 'text-gray-400'
+                          index === selectedIndex ? 'text-[var(--primary)]' : 'text-[var(--grey)]'
                         }`}
                       >
                         {command.icon}
@@ -272,34 +272,34 @@ const CommandPalette = memo(() => {
                       <div className="flex-1">
                         <div
                           className={`font-semibold ${
-                            index === selectedIndex ? 'text-cyan-400' : 'text-white'
+                            index === selectedIndex ? 'text-[var(--primary)]' : 'text-white'
                           }`}
                         >
                           {command.title}
                         </div>
-                        <div className="text-sm text-gray-400">{command.description}</div>
+                        <div className="text-sm text-[var(--grey)]">{command.description}</div>
                       </div>
                     </motion.button>
                   ))}
                 </div>
               ) : (
-                <div className="p-8 text-center text-gray-500">
+                <div className="p-8 text-center text-[var(--grey)]">
                   No commands found for "{search}"
                 </div>
               )}
             </div>
 
             {/* Footer */}
-            <div className="flex items-center justify-between p-3 border-t border-gray-800 text-xs text-gray-500">
+            <div className="flex items-center justify-between p-3 border-t border-[var(--light-grey)] text-xs text-[var(--grey)]">
               <div className="flex gap-4">
                 <span className="flex items-center gap-1">
-                  <kbd className="px-2 py-1 bg-gray-800 rounded">↑↓</kbd> Navigate
+                  <kbd className="px-2 py-1 bg-[var(--bg-tertiary)] rounded">↑↓</kbd> Navigate
                 </span>
                 <span className="flex items-center gap-1">
-                  <kbd className="px-2 py-1 bg-gray-800 rounded">↵</kbd> Select
+                  <kbd className="px-2 py-1 bg-[var(--bg-tertiary)] rounded">↵</kbd> Select
                 </span>
                 <span className="flex items-center gap-1">
-                  <kbd className="px-2 py-1 bg-gray-800 rounded">Esc</kbd> Close
+                  <kbd className="px-2 py-1 bg-[var(--bg-tertiary)] rounded">Esc</kbd> Close
                 </span>
               </div>
             </div>
